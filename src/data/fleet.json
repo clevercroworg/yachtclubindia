@@ -1,0 +1,639 @@
+[
+    {
+        "id": "phoenix",
+        "title": "Phoenix Yacht",
+        "image": "/images/yacht/phoenix-1.jpg",
+        "images": [
+            "/images/yacht/phoenix-1.jpg",
+            "/images/yacht/phoenix-2.jpg",
+            "/images/yacht/phoenix-3.jpg",
+            "/images/yacht/phoenix-4.jpg",
+            "/images/yacht/DJI_20260214204839_0010_D.JPG",
+            "/images/yacht/DJI_20260214205036_0046_D.JPG",
+            "/images/yacht/DJI_20260214205042_0051_D.JPG",
+            "/images/yacht/DJI_20260214205313_0099_D.JPG",
+            "/images/yacht/DJI_20260214205423_0109_D.JPG",
+            "/images/yacht/DJI_20260214210735_0003_D.JPG",
+            "/images/yacht/DJI_20260214210739_0006_D.JPG",
+            "/images/yacht/DJI_20260214210743_0009_D.JPG"
+        ],
+        "capacity": "12",
+        "duration": "2",
+        "price": "₹18,000",
+        "pricePerHour": 9000,
+        "series": "YC78",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Fully air-conditioned bedrooms",
+            "Spacious indoor lounge area",
+            "Unique glass dance floor",
+            "Clean and well-maintained washroom",
+            "Large open deck with ample space"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Private parties",
+            "Couple experiences"
+        ],
+        "highlight": "The yacht features a long open deck, making it one of the most recommended yachts by photographers for pre-wedding shoots and professional photography.",
+        "tag": {
+            "type": "featured",
+            "label": "Featured"
+        }
+    },
+    {
+        "id": "leopard",
+        "title": "Leopard",
+        "image": "/images/yacht/leopard/leopard-1.jpg",
+        "images": [
+            "/images/yacht/leopard/leopard-1.jpg",
+            "/images/yacht/leopard/leopard-2.jpg",
+            "/images/yacht/leopard/leopard-3.jpg",
+            "/images/yacht/leopard/leopard-4.jpg",
+            "/images/yacht/leopard/leopard-5.jpg",
+            "/images/yacht/leopard/leopard-6.jpg",
+            "/images/yacht/leopard/leopard-7.jpg",
+            "/images/yacht/leopard/leopard-8.jpg",
+            "/images/yacht/leopard/leopard-9.jpg",
+            "/images/yacht/leopard/leopard-10.jpg",
+            "/images/yacht/leopard/leopard-11.jpg",
+            "/images/yacht/leopard/leopard-12.jpg"
+        ],
+        "capacity": "18",
+        "duration": "2",
+        "price": "₹29,000",
+        "pricePerHour": 14500,
+        "series": "YC81",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "The one and only Luxury sailing yacht in goa and best one to sail in sea.",
+            "Spacious Bedroom with AC",
+            "Lounge area with AC",
+            "Perfect for couple",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Couple experiences",
+            "Video shoot",
+            "Open sea adventures"
+        ],
+        "highlight": "The yacht is made for style and luxury and this one one a kind yacht sailing Yacht and very unique and high in demand",
+        "tag": {
+            "type": "new",
+            "label": "Luxury Sailing"
+        }
+    },
+    {
+        "id": "dreams-yacht",
+        "title": "Dreams Yacht",
+        "image": "/images/yacht/dreams-yacht/dreams-13.jpeg",
+        "images": [
+            "/images/yacht/dreams-yacht/dreams-13.jpeg",
+            "/images/yacht/dreams-yacht/dreams-2.jpg",
+            "/images/yacht/dreams-yacht/dreams-3.jpg",
+            "/images/yacht/dreams-yacht/dreams-4.jpg",
+            "/images/yacht/dreams-yacht/dreams-5.jpg",
+            "/images/yacht/dreams-yacht/dreams-6.jpg",
+            "/images/yacht/dreams-yacht/dreams-7.jpg",
+            "/images/yacht/dreams-yacht/dreams-8.jpg",
+            "/images/yacht/dreams-yacht/dreams-9.jpg",
+            "/images/yacht/dreams-yacht/dreams-10.jpg",
+            "/images/yacht/dreams-yacht/dreams-11.jpg",
+            "/images/yacht/dreams-yacht/dreams-12.jpg"
+        ],
+        "capacity": "15",
+        "duration": "2",
+        "price": "₹18,000",
+        "pricePerHour": 9000,
+        "series": "YC82",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom with AC",
+            "Lounge area with AC",
+            "Perfect for couple",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Red and white theme",
+            "Budget friendly"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Couple experiences",
+            "Video shoot",
+            "Dolphin spotting experience"
+        ],
+        "highlight": "The yacht is made for style and luxury and this has red and white theme marking its name like dream and very unique and high in demand",
+        "tag": {
+            "type": "best",
+            "label": "Budget Friendly"
+        }
+    },
+    {
+        "id": "venus",
+        "title": "Venus",
+        "image": "/images/yacht/venus/venus-13.jpeg",
+        "images": [
+            "/images/yacht/venus/venus-13.jpeg",
+            "/images/yacht/venus/venus-2.jpg",
+            "/images/yacht/venus/venus-3.jpg",
+            "/images/yacht/venus/venus-4.jpg",
+            "/images/yacht/venus/venus-5.jpg",
+            "/images/yacht/venus/venus-6.jpg",
+            "/images/yacht/venus/venus-7.jpg",
+            "/images/yacht/venus/venus-8.jpg",
+            "/images/yacht/venus/venus-9.jpg",
+            "/images/yacht/venus/venus-10.jpg",
+            "/images/yacht/venus/venus-11.jpg",
+            "/images/yacht/venus/venus-12.jpg"
+        ],
+        "capacity": "10",
+        "duration": "2",
+        "price": "₹15,000",
+        "pricePerHour": 7500,
+        "series": "YC83",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom",
+            "Lounge area",
+            "Perfect for couple",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Upper deck area",
+            "Budget friendly"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Couple experiences",
+            "Video shoot",
+            "Open beach experience"
+        ],
+        "highlight": "The yacht is made for style and luxury and has upper deck open view which makes it special and also in budget segment",
+        "tag": {
+            "type": "featured",
+            "label": "Cozy Charter"
+        }
+    },
+    {
+        "id": "blue-diamond",
+        "title": "Blue Diamond",
+        "image": "/images/yacht/blue-diamond/blue-diamond-1.jpg",
+        "images": [
+            "/images/yacht/blue-diamond/blue-diamond-1.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-2.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-3.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-4.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-5.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-6.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-7.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-8.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-9.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-10.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-11.jpg",
+            "/images/yacht/blue-diamond/blue-diamond-12.jpg"
+        ],
+        "capacity": "20",
+        "duration": "2",
+        "price": "₹32,000",
+        "pricePerHour": 16000,
+        "series": "YC84",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom with AC",
+            "Lounge area with AC",
+            "Perfect for couple and big groups",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Huge space on back as well",
+            "Luxury imported yacht"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Video shoot",
+            "Open beach experience",
+            "Big group party"
+        ],
+        "highlight": "The yacht is made for style and luxury and has upper deck, open deck and lounge area and its the one of the luxury Yachts in goa",
+        "tag": {
+            "type": "best",
+            "label": "Most Popular"
+        }
+    },
+    {
+        "id": "majestic-ii",
+        "title": "Majestic II",
+        "image": "/images/yacht/majestic-ii/majestic-13.jpeg",
+        "images": [
+            "/images/yacht/majestic-ii/majestic-13.jpeg",
+            "/images/yacht/majestic-ii/majestic-2.jpg",
+            "/images/yacht/majestic-ii/majestic-3.jpg",
+            "/images/yacht/majestic-ii/majestic-4.jpg",
+            "/images/yacht/majestic-ii/majestic-5.jpg",
+            "/images/yacht/majestic-ii/majestic-6.jpg",
+            "/images/yacht/majestic-ii/majestic-7.jpg",
+            "/images/yacht/majestic-ii/majestic-8.jpg",
+            "/images/yacht/majestic-ii/majestic-9.jpg",
+            "/images/yacht/majestic-ii/majestic-10.jpg",
+            "/images/yacht/majestic-ii/majestic-11.jpg",
+            "/images/yacht/majestic-ii/majestic-12.jpg"
+        ],
+        "capacity": "15",
+        "duration": "2",
+        "price": "₹17,000",
+        "pricePerHour": 8500,
+        "series": "YC85",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom",
+            "Lounge area",
+            "Perfect for couple and big groups",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Huge space on back as well",
+            "Blue and white theme"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Video shoot",
+            "Open beach experience",
+            "Big group party"
+        ],
+        "highlight": "The yacht is made for style and luxury and has blue and white theme which goes perfect for photoshoot as well",
+        "tag": {
+            "type": "featured",
+            "label": "Sleek Design"
+        }
+    },
+    {
+        "id": "ralston",
+        "title": "Ralston",
+        "image": "/images/yacht/ralston/ralston-13.jpeg",
+        "images": [
+            "/images/yacht/ralston/ralston-13.jpeg",
+            "/images/yacht/ralston/ralston-2.jpg",
+            "/images/yacht/ralston/ralston-3.jpg",
+            "/images/yacht/ralston/ralston-4.jpg",
+            "/images/yacht/ralston/ralston-5.jpg",
+            "/images/yacht/ralston/ralston-6.jpg",
+            "/images/yacht/ralston/ralston-7.jpg",
+            "/images/yacht/ralston/ralston-8.jpg",
+            "/images/yacht/ralston/ralston-9.jpg",
+            "/images/yacht/ralston/ralston-10.jpg",
+            "/images/yacht/ralston/ralston-11.jpg",
+            "/images/yacht/ralston/ralston-12.jpg"
+        ],
+        "capacity": "22",
+        "duration": "2",
+        "price": "₹24,000",
+        "pricePerHour": 12000,
+        "series": "YC86",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom with AC",
+            "Lounge area with AC",
+            "Perfect for couple and big groups",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Huge space on back as well",
+            "Ideal for big groups"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Video shoot",
+            "Open beach experience",
+            "Big group party"
+        ],
+        "highlight": "The yacht is made for style and luxury and has huge deck space which goes perfect for photoshoot and party as well",
+        "tag": {
+            "type": "new",
+            "label": "Big Group"
+        }
+    },
+    {
+        "id": "havana",
+        "title": "Havana",
+        "image": "/images/yacht/havana/havana-1.jpg",
+        "images": [
+            "/images/yacht/havana/havana-1.jpg",
+            "/images/yacht/havana/havana-2.jpg",
+            "/images/yacht/havana/havana-3.jpg",
+            "/images/yacht/havana/havana-4.jpg",
+            "/images/yacht/havana/havana-5.jpg",
+            "/images/yacht/havana/havana-6.jpg",
+            "/images/yacht/havana/havana-7.jpg",
+            "/images/yacht/havana/havana-8.jpg",
+            "/images/yacht/havana/havana-9.jpg",
+            "/images/yacht/havana/havana-10.jpg",
+            "/images/yacht/havana/havana-11.jpg",
+            "/images/yacht/havana/havana-12.jpg"
+        ],
+        "capacity": "15",
+        "duration": "2",
+        "price": "₹18,000",
+        "pricePerHour": 9000,
+        "series": "YC86",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom",
+            "Lounge area",
+            "Perfect for couple and big groups",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Huge space on back as well",
+            "Luxury interiors"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Video shoot",
+            "Open beach experience",
+            "Big group party"
+        ],
+        "highlight": "The yacht is made for style and luxury and has Spacious upper deck and luxury interiors",
+        "tag": {
+            "type": "best",
+            "label": "Premium Interior"
+        }
+    },
+    {
+        "id": "amzonite",
+        "title": "Amzonite Yacht",
+        "image": "/images/yacht/amazonite/amzonite-1.jpg",
+        "images": [
+            "/images/yacht/amazonite/amzonite-1.jpg",
+            "/images/yacht/amazonite/amzonite-2.jpg",
+            "/images/yacht/amazonite/amzonite-3.jpg",
+            "/images/yacht/amazonite/amzonite-4.jpg",
+            "/images/yacht/amazonite/amzonite-5.jpg",
+            "/images/yacht/amazonite/amzonite-6.jpg",
+            "/images/yacht/amazonite/amzonite-7.jpg",
+            "/images/yacht/amazonite/amzonite-8.jpg",
+            "/images/yacht/amazonite/amzonite-9.jpg",
+            "/images/yacht/amazonite/amzonite-10.jpg",
+            "/images/yacht/amazonite/amzonite-11.jpg",
+            "/images/yacht/amazonite/amzonite-12.jpg"
+        ],
+        "capacity": "16",
+        "duration": "2",
+        "price": "₹21,000",
+        "pricePerHour": 10500,
+        "series": "YC80",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom with AC",
+            "Lounge area with AC",
+            "Perfect for couple",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "The one and only black yacht in goa with unique and highly in demand"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Couple experiences",
+            "Video shoot"
+        ],
+        "highlight": "The yacht is made for style and luxury and this one one a kind yacht and very unique and high in demand",
+        "tag": {
+            "type": "new",
+            "label": "Black Yacht"
+        }
+    },
+    {
+        "id": "rinker",
+        "title": "Rinker Yacht",
+        "image": "/images/yacht/rinker yacht/rinker-13.jpeg",
+        "images": [
+            "/images/yacht/rinker yacht/rinker-13.jpeg",
+            "/images/yacht/rinker yacht/rinker-2.jpg",
+            "/images/yacht/rinker yacht/rinker-3.jpg",
+            "/images/yacht/rinker yacht/rinker-4.jpg",
+            "/images/yacht/rinker yacht/rinker-5.jpg",
+            "/images/yacht/rinker yacht/rinker-6.jpg",
+            "/images/yacht/rinker yacht/rinker-7.jpg",
+            "/images/yacht/rinker yacht/rinker-8.jpg",
+            "/images/yacht/rinker yacht/rinker-9.jpg",
+            "/images/yacht/rinker yacht/rinker-10.jpg",
+            "/images/yacht/rinker yacht/rinker-11.jpg",
+            "/images/yacht/rinker yacht/rinker-12.jpg"
+        ],
+        "capacity": "6",
+        "duration": "2",
+        "price": "₹13,000",
+        "pricePerHour": 6500,
+        "series": "YC79",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom",
+            "Lounge area",
+            "Perfect for couple",
+            "Clean and well-maintained washroom",
+            "Open deck with ample space"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Couple experiences"
+        ],
+        "highlight": "The yacht is US made and brand speak itself for it perfect for couple and budget friendly",
+        "tag": {
+            "type": "best",
+            "label": "Budget Friendly"
+        }
+    },
+    {
+        "id": "nityay",
+        "title": "Nityay",
+        "image": "/images/yacht/nityay/nityay-1.jpg",
+        "images": [
+            "/images/yacht/nityay/nityay-1.jpg",
+            "/images/yacht/nityay/nityay-2.jpg",
+            "/images/yacht/nityay/nityay-3.jpg",
+            "/images/yacht/nityay/nityay-4.jpg",
+            "/images/yacht/nityay/nityay-5.jpg",
+            "/images/yacht/nityay/nityay-6.jpg",
+            "/images/yacht/nityay/nityay-7.jpg",
+            "/images/yacht/nityay/nityay-8.jpg",
+            "/images/yacht/nityay/nityay-9.jpg",
+            "/images/yacht/nityay/nityay-10.jpg",
+            "/images/yacht/nityay/nityay-11.jpg",
+            "/images/yacht/nityay/nityay-12.jpg"
+        ],
+        "capacity": "25",
+        "duration": "2",
+        "price": "₹25,000",
+        "pricePerHour": 12500,
+        "series": "YC87",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious Bedroom with ac",
+            "Lounge area with ac",
+            "Perfect for couple and big groups",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space and huge space on back as well",
+            "This is luxury yacht and one of the big and best Yachts in goa"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Video shoot",
+            "Open beach experience",
+            "Big group party"
+        ],
+        "highlight": "The yacht is made for style and luxury and is perfect for big groups upto 25 and highest booked yacht",
+        "tag": {
+            "type": "featured",
+            "label": "Highest Booked"
+        }
+    },
+    {
+        "id": "foxy-lady",
+        "title": "Foxy Lady",
+        "image": "/images/yacht/foxy lady/majesty-66-yacht-goa-photo-3.jpg",
+        "images": [
+            "/images/yacht/foxy lady/majesty-66-yacht-goa-photo-3.jpg",
+            "/images/yacht/foxy lady/Top-Deck.jpg",
+            "/images/yacht/foxy lady/Front-deck-.jpg",
+            "/images/yacht/foxy lady/Front-deck--(1).jpg",
+            "/images/yacht/foxy lady/Front-deck--(2).jpg",
+            "/images/yacht/foxy lady/Interior.jpg",
+            "/images/yacht/foxy lady/Interior-(1).jpg",
+            "/images/yacht/foxy lady/Interior(2).jpg",
+            "/images/yacht/foxy lady/Interior-(3).jpg",
+            "/images/yacht/foxy lady/Gulf-Craft-Majesty-66-.jpg",
+            "/images/yacht/foxy lady/CREW-.jpg",
+            "/images/yacht/foxy lady/CREW--(1).jpg"
+        ],
+        "capacity": "25",
+        "duration": "2",
+        "price": "₹60,000",
+        "pricePerHour": 30000,
+        "series": "YC88",
+        "route": "Mandovi River – Miramar Beach and surrounding scenic coastline.",
+        "features": [
+            "Spacious 2 Bedroom with AC",
+            "Lounge area with AC",
+            "Perfect for couple and big groups",
+            "Clean and well-maintained washroom",
+            "Open deck and seating on top deck with ample space",
+            "Huge space on back as well",
+            "Most luxury yacht in Goa"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Cutlery"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Pre-wedding photoshoots",
+            "Birthday celebrations",
+            "Video shoot",
+            "Open beach experience",
+            "Big group party"
+        ],
+        "highlight": "The yacht is made for style and luxury and it's the most expensive yacht in Goa and highly in demand",
+        "tag": {
+            "type": "featured",
+            "label": "Ultra Luxe"
+        }
+    }
+]

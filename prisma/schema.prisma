@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Booking {
+  id                  String   @id @default(uuid())
+  yacht_title         String
+  yacht_id            String
+  booking_date        String
+  time_slot           String
+  guests              Int
+  extra_hours         Int
+  addons              Json?
+  total_hours         Int
+  charter_cost        Int
+  addons_cost         Int
+  quantity            Int
+  subtotal            Int
+  customer_first_name String
+  customer_last_name  String
+  customer_email      String
+  customer_phone      String
+  customer_company    String?
+  status              String   @default("pending")
+  amount_in_paise     Int      @default(0)
+  razorpay_order_id   String?
+  razorpay_payment_id String?
+  razorpay_signature  String?
+  payment_status      String   @default("pending")
+  createdAt           DateTime @default(now())
+}

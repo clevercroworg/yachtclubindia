@@ -1,0 +1,27 @@
+[
+    {
+        "id": "q1",
+        "question": "How do I book a yacht charter?",
+        "answer": "Share your date, group size, and preferred experience. Our concierge confirms availability and itinerary."
+    },
+    {
+        "id": "q2",
+        "question": "Can I customize food and decor?",
+        "answer": "Yes, we offer tailored upgrades including dining, decor styling, and celebration services."
+    },
+    {
+        "id": "q3",
+        "question": "Are safety measures onboard?",
+        "answer": "All charters include trained crew, life jackets, and required maritime safety protocols."
+    },
+    {
+        "id": "q4",
+        "question": "What is included in charter pricing?",
+        "answer": "Pricing usually includes yacht, crew, fuel for standard routes, and baseline amenities."
+    },
+    {
+        "id": "q5",
+        "question": "Do you operate in monsoon season?",
+        "answer": "Operations depend on weather and port authority advisories. We provide date-specific guidance."
+    }
+]

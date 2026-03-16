@@ -1,0 +1,50 @@
+[
+    {
+        "id": "t1",
+        "quote": "Absolutely seamless from booking to docking. The sunset charter felt world-class.",
+        "author": "Aarav M.",
+        "location": "Mumbai",
+        "platform": "google",
+        "rating": 5
+    },
+    {
+        "id": "t2",
+        "quote": "We hosted a birthday onboard and every detail was curated beautifully.",
+        "author": "Rhea S.",
+        "location": "Bengaluru",
+        "platform": "instagram",
+        "rating": 5
+    },
+    {
+        "id": "t3",
+        "quote": "Crew was highly professional and the yacht was pristine. Premium throughout.",
+        "author": "Karan P.",
+        "location": "Delhi",
+        "platform": "facebook",
+        "rating": 5
+    },
+    {
+        "id": "t4",
+        "quote": "Our pre-wedding shoot was magical. Service, vibe, and route were all perfect.",
+        "author": "Ishita & Dev",
+        "location": "Pune",
+        "platform": "google",
+        "rating": 5
+    },
+    {
+        "id": "t5",
+        "quote": "Corporate hosting felt elevated and effortless. Guests were genuinely impressed.",
+        "author": "Nikhil R.",
+        "location": "Hyderabad",
+        "platform": "instagram",
+        "rating": 5
+    },
+    {
+        "id": "t6",
+        "quote": "The whole experience felt private, calm, and luxurious. Worth every minute.",
+        "author": "Meera T.",
+        "location": "Goa",
+        "platform": "facebook",
+        "rating": 5
+    }
+]

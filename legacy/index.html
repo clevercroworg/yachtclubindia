@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yacht Club India | Private Luxury Yacht Charters in Goa</title>
+  <meta name="description" content="Private luxury yacht charters in Goa with curated experiences on the Arabian Sea." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#06121F',
+            navySoft: '#EEF3F8',
+            navyCard: '#FFFFFF',
+            gold: '#C8A45D',
+            textMain: '#10233D',
+            textMuted: '#5F738A'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F4F7FB] text-[#10233D] antialiased">
+  <header id="site-header" class="fixed top-0 z-50 w-full transition-all duration-300">
+    <div class="header-wrap mx-auto max-w-7xl px-6 transition-all duration-300">
+      <nav class="flex h-20 items-center justify-between" aria-label="Primary">
+        <a href="#" class="inline-flex items-center gap-3">
+          <img src="images/logo.png" alt="Yacht Club India" class="h-10 w-auto" />
+        </a>
+
+        <ul class="hidden items-center gap-8 lg:flex">
+          <li><a class="nav-link is-active" href="#">Home</a></li>
+          <li><a class="nav-link" href="#experiences">Experiences</a></li>
+          <li><a class="nav-link" href="#fleet">Fleet</a></li>
+          <li class="relative group">
+            <button class="nav-link nav-trigger" aria-haspopup="true">
+              <span>Occasions</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="dropdown-panel absolute left-0 top-9 hidden min-w-52 rounded-xl border border-black/10 bg-white/95 p-2 group-hover:block group-focus-within:block">
+              <a href="#occasions" class="dropdown-item">Proposals</a>
+              <a href="#occasions" class="dropdown-item">Birthdays</a>
+              <a href="#occasions" class="dropdown-item">Weddings</a>
+              <a href="#occasions" class="dropdown-item">Corporate</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="hidden items-center gap-3 lg:flex">
+          <a href="#" class="btn-gold btn-icon"><i data-lucide="anchor"></i><span>Book Now</span></a>
+          <a href="#" class="btn-outline btn-icon"><i data-lucide="message-circle"></i><span>Chat with us</span></a>
+        </div>
+
+        <div class="flex items-center gap-2 lg:hidden">
+          <a href="#" class="mobile-quick-btn book" aria-label="Book Now">
+            <i data-lucide="anchor"></i>
+            <span>Book Now</span>
+          </a>
+          <button id="menu-toggle" class="inline-flex items-center rounded-lg border border-white/25 p-2 text-white" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+            <span class="text-lg">☰</span>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="mobile-menu lg:hidden" hidden>
+        <div class="mobile-menu-panel rounded-2xl border border-black/10 bg-white/95 p-5">
+          <p class="mobile-menu-label">Navigation</p>
+          <a class="mobile-link" href="#">Home</a>
+          <a class="mobile-link" href="#experiences">Experiences</a>
+          <a class="mobile-link" href="#fleet">Fleet</a>
+          <div class="mobile-dropdown">
+            <button class="mobile-link mobile-drop-trigger" type="button" aria-expanded="false" aria-controls="mobile-occ-list">
+              <span>Occasions</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div id="mobile-occ-list" class="mobile-drop-list" hidden>
+              <a href="#occasions" class="mobile-sub-link">Proposals</a>
+              <a href="#occasions" class="mobile-sub-link">Birthdays</a>
+              <a href="#occasions" class="mobile-sub-link">Weddings</a>
+              <a href="#occasions" class="mobile-sub-link">Corporate</a>
+            </div>
+          </div>
+          <a class="mobile-link" href="#about">About</a>
+          <a class="mobile-link" href="#contact">Contact</a>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <a href="#" class="btn-gold btn-icon text-center"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            <a href="#" class="btn-outline btn-icon text-center"><i data-lucide="message-circle"></i><span>Chat</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative flex min-h-screen items-center overflow-hidden">
+      <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline>
+        <source src="videos/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay absolute inset-0"></div>
+
+      <div class="relative mx-auto w-full max-w-7xl px-6 pt-28" data-reveal>
+        <div class="max-w-3xl">
+          <p class="mb-5 inline-flex items-center gap-3 text-sm tracking-[0.2em] text-gold uppercase">
+            Yacht Club India
+            <span class="h-px w-16 bg-gold/70"></span>
+          </p>
+          <h1 class="font-heading text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
+            Private Luxury Yacht Charters in Goa
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg text-[#D6DEE8]">
+            Curated experiences across the Arabian Sea, crafted for intimate escapes, celebrations, and elevated coastal moments.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#" class="btn-gold btn-icon"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            <a href="#" class="btn-outline btn-icon"><i data-lucide="message-circle"></i><span>Chat on WhatsApp</span></a>
+          </div>
+          <p class="mt-4 text-sm text-[#C4D0DD]">Starting from ₹____ / hour</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiences" class="section-surface py-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-10" data-reveal>
+          <h2 class="section-title">Signature Experiences</h2>
+          <p class="section-subtitle">Choose from curated journeys designed for Goa's most beautiful hours.</p>
+          <div class="exp-controls mt-5 flex items-center justify-end gap-2">
+            <button id="exp-prev" class="exp-control-btn" aria-label="Previous experiences">
+              <i data-lucide="chevron-left"></i>
+            </button>
+            <button id="exp-next" class="exp-control-btn" aria-label="Next experiences">
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative" data-reveal>
+          <div class="fade-edge-left"></div>
+          <div class="fade-edge-right"></div>
+          <div id="experiences-track" class="flex gap-6 overflow-x-auto pb-2 pr-6 no-scrollbar">
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c1.jpg" alt="Private charter experience" />
+              </div>
+              <h3 class="card-title">Private Charters</h3>
+              <p class="card-copy">Exclusive yacht time tailored for your group.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c2.jpg" alt="Sunset cruise experience" />
+              </div>
+              <h3 class="card-title">Sunset Cruises</h3>
+              <p class="card-copy">Golden-hour sailing with premium service onboard.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c3.jpg" alt="Dinner cruise experience" />
+              </div>
+              <h3 class="card-title">Dinner Cruises</h3>
+              <p class="card-copy">Fine dining ambience on calm evening waters.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c4.jpg" alt="Adventure island trip experience" />
+              </div>
+              <h3 class="card-title">Adventure Island Trips</h3>
+              <p class="card-copy">Explore hidden shorelines and island routes.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c5.jpg" alt="Wedding and pre-wedding yacht experience" />
+              </div>
+              <h3 class="card-title">Pre-Wedding Shoots</h3>
+              <p class="card-copy">Elegant backdrops for timeless celebrations.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c6.jpg" alt="Corporate yacht event experience" />
+              </div>
+              <h3 class="card-title">Corporate Events</h3>
+              <p class="card-copy">Premium hosting for teams and clients at sea.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c7.jpg" alt="Anniversary celebration yacht experience" />
+              </div>
+              <h3 class="card-title">Anniversary Celebrations</h3>
+              <p class="card-copy">Private moments with curated onboard ambience.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+            <article class="exp-card">
+              <div class="image-ph exp-image">
+                <img src="images/c8.jpg" alt="Luxury day escape yacht experience" />
+              </div>
+              <h3 class="card-title">Luxury Day Escapes</h3>
+              <p class="card-copy">Half-day and full-day premium sea itineraries.</p>
+              <div class="meta-row">
+                <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="enquire-chip btn-icon"><span>Enquire</span><i data-lucide="arrow-up-right"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="luxe-cta-wrap">
+      <div class="luxe-cta-box" data-reveal>
+        <div class="luxe-cta-inner">
+          <div class="luxe-cta-copy">
+            <p class="luxe-cta-kicker">Experience Goa from the Sea</p>
+            <h3 class="luxe-cta-title">Reserve Your Private Charter Today</h3>
+          </div>
+          <a href="#" class="btn-gold btn-icon luxe-cta-btn"><i data-lucide="anchor"></i><span>Book a Yacht</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="fleet" class="bg-[#F4F7FB] py-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-10" data-reveal>
+          <h2 class="section-title">Our Fleet</h2>
+          <p class="section-subtitle">Handpicked yachts for private escapes, celebrations, and corporate hosting.</p>
+        </div>
+
+        <div class="mb-8 flex flex-wrap items-center gap-3" data-reveal>
+          <button class="chip">Capacity ▾</button>
+          <button class="chip">Price ▾</button>
+          <button class="chip">Duration ▾</button>
+          <button class="chip">Type ▾</button>
+          <div class="ml-auto">
+            <label for="sort" class="sr-only">Sort</label>
+            <select id="sort" class="chip">
+              <option>Featured</option>
+              <option>Price</option>
+              <option>Capacity</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag new">New</span>
+            </div>
+            <div class="image-ph h-44 fleet-image">
+              <img src="images/yacht.png" alt="Yacht placeholder image" />
+            </div>
+            <div class="mt-3 flex gap-2 text-xs">
+              <span class="badge">Up to ___ guests</span>
+              <span class="badge">___ hrs</span>
+            </div>
+            <div class="fleet-meta-row mt-3">
+              <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            </div>
+          </article>
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag featured">Featured</span>
+            </div>
+            <div class="image-ph h-44 fleet-image">
+              <img src="images/yacht.png" alt="Yacht placeholder image" />
+            </div>
+            <div class="mt-3 flex gap-2 text-xs">
+              <span class="badge">Up to ___ guests</span>
+              <span class="badge">___ hrs</span>
+            </div>
+            <div class="fleet-meta-row mt-3">
+              <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            </div>
+          </article>
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag best">Best Seller</span>
+            </div>
+            <div class="image-ph h-44 fleet-image">
+              <img src="images/yacht.png" alt="Yacht placeholder image" />
+            </div>
+            <div class="mt-3 flex gap-2 text-xs">
+              <span class="badge">Up to ___ guests</span>
+              <span class="badge">___ hrs</span>
+            </div>
+            <div class="fleet-meta-row mt-3">
+              <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            </div>
+          </article>
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag new">New</span>
+            </div>
+            <div class="image-ph h-44 fleet-image">
+              <img src="images/yacht.png" alt="Yacht placeholder image" />
+            </div>
+            <div class="mt-3 flex gap-2 text-xs">
+              <span class="badge">Up to ___ guests</span>
+              <span class="badge">___ hrs</span>
+            </div>
+            <div class="fleet-meta-row mt-3">
+              <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            </div>
+          </article>
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag featured">Featured</span>
+            </div>
+            <div class="image-ph h-44 fleet-image">
+              <img src="images/yacht.png" alt="Yacht placeholder image" />
+            </div>
+            <div class="mt-3 flex gap-2 text-xs">
+              <span class="badge">Up to ___ guests</span>
+              <span class="badge">___ hrs</span>
+            </div>
+            <div class="fleet-meta-row mt-3">
+              <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            </div>
+          </article>
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag best">Best Seller</span>
+            </div>
+            <div class="image-ph h-44 fleet-image">
+              <img src="images/yacht.png" alt="Yacht placeholder image" />
+            </div>
+            <div class="mt-3 flex gap-2 text-xs">
+              <span class="badge">Up to ___ guests</span>
+              <span class="badge">___ hrs</span>
+            </div>
+            <div class="fleet-meta-row mt-3">
+              <p class="card-meta">Starting from ₹____</p>
+              <a href="#" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="occasions" class="occasions-luxe py-28">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <h2 class="section-title">Occasions at Sea</h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <a href="#" class="occasion-tile">
+            <img src="images/s1.jpg" alt="Proposal occasion on yacht" />
+            <span>Proposals</span>
+          </a>
+          <a href="#" class="occasion-tile">
+            <img src="images/s2.jpg" alt="Birthday occasion on yacht" />
+            <span>Birthdays</span>
+          </a>
+          <a href="#" class="occasion-tile">
+            <img src="images/s3.jpg" alt="Romantic getaway on yacht" />
+            <span>Romantic Getaways</span>
+          </a>
+          <a href="#" class="occasion-tile">
+            <img src="images/s4.jpg" alt="Wedding occasion on yacht" />
+            <span>Weddings</span>
+          </a>
+          <a href="#" class="occasion-tile">
+            <img src="images/s5.jpg" alt="Corporate yacht event occasion" />
+            <span>Corporate</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="location-section bg-[#F4F7FB] py-28">
+      <div class="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2">
+        <div data-reveal>
+          <h2 class="section-title">Location & Service Areas</h2>
+          <p class="section-subtitle mt-4">Board from the heart of Goa and cruise routes designed for both tranquil escapes and vibrant celebrations.</p>
+          <div class="location-points mt-10 space-y-4">
+            <p class="location-item"><i data-lucide="map-pin" class="text-gold"></i><span><span class="text-gold">Boarding Point:</span> Brittona Jetty, Panjim</span></p>
+            <p class="location-item"><i data-lucide="compass" class="text-gold"></i><span><span class="text-gold">Service Areas:</span> North Goa & South Goa</span></p>
+          </div>
+        </div>
+        <div data-reveal>
+          <div class="map-ph">
+            <iframe
+              title="Yacht Club India boarding point map"
+              src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15379.524304324936!2d73.81148447611676!3d15.490827737741519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sBrittona%20Jetty%2C%20Panjim!5e0!3m2!1sen!2sin!4v1771985595168!5m2!1sen!2sin"
+              width="600"
+              height="450"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/a6WpobfVfr3rUrq86"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-link mt-4 inline-flex items-center gap-2 text-sm">
+            <i data-lucide="map-pinned"></i>
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section section-surface py-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-12" data-reveal>
+          <h2 class="section-title">Guest Testimonials</h2>
+          <p class="section-subtitle">Real words from guests who chose Yacht Club India for unforgettable sea experiences.</p>
+        </div>
+
+        <div class="space-y-4" data-reveal>
+          <div class="testimonial-track-wrap">
+            <div class="testimonial-track">
+              <article class="testimonial-card">
+                <p>"Absolutely seamless from booking to docking. The sunset charter felt world-class."</p>
+                <div class="testimonial-meta">Aarav M. • Mumbai</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"We hosted a birthday onboard and every detail was curated beautifully."</p>
+                <div class="testimonial-meta">Rhea S. • Bengaluru</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"Crew was highly professional and the yacht was pristine. Premium throughout."</p>
+                <div class="testimonial-meta">Karan P. • Delhi</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"Our pre-wedding shoot was magical. Service, vibe, and route were all perfect."</p>
+                <div class="testimonial-meta">Ishita & Dev • Pune</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"Corporate hosting felt elevated and effortless. Guests were genuinely impressed."</p>
+                <div class="testimonial-meta">Nikhil R. • Hyderabad</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"The whole experience felt private, calm, and luxurious. Worth every minute."</p>
+                <div class="testimonial-meta">Meera T. • Goa</div>
+              </article>
+            </div>
+          </div>
+
+          <div class="testimonial-track-wrap">
+            <div class="testimonial-track reverse">
+              <article class="testimonial-card">
+                <p>"Food and decor upgrades were tasteful and premium, not overdone."</p>
+                <div class="testimonial-meta">Ananya K. • Chennai</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"Best private charter in Goa so far. Team handled everything end-to-end."</p>
+                <div class="testimonial-meta">Rohan D. • Gurgaon</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"Evening cruise with family was smooth, safe, and genuinely memorable."</p>
+                <div class="testimonial-meta">Sahil V. • Ahmedabad</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"The itinerary was customized perfectly for us. Concierge support was excellent."</p>
+                <div class="testimonial-meta">Priya N. • Kochi</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"A polished luxury experience with no friction at any step."</p>
+                <div class="testimonial-meta">Varun J. • Jaipur</div>
+              </article>
+              <article class="testimonial-card">
+                <p>"From pickup to drop, everything felt organized, elegant, and private."</p>
+                <div class="testimonial-meta">Zoya A. • Kolkata</div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-surface py-28">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <h2 class="section-title no-divider">Instagram</h2>
+          <a href="#" class="btn-outline btn-icon"><i data-lucide="instagram"></i><span>Follow @yachtclubindia_</span></a>
+        </div>
+        <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+          <div class="ig-ph"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#F4F7FB] py-28">
+      <div class="mx-auto max-w-4xl px-6" data-reveal>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="mt-8 space-y-3" id="faq-list">
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">How do I book a yacht charter?</button>
+            <div class="faq-panel">Share your date, group size, and preferred experience. Our concierge confirms availability and itinerary.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">Can I customize food and decor?</button>
+            <div class="faq-panel">Yes, we offer tailored upgrades including dining, decor styling, and celebration services.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">Are safety measures onboard?</button>
+            <div class="faq-panel">All charters include trained crew, life jackets, and required maritime safety protocols.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">What is included in charter pricing?</button>
+            <div class="faq-panel">Pricing usually includes yacht, crew, fuel for standard routes, and baseline amenities.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">Do you operate in monsoon season?</button>
+            <div class="faq-panel">Operations depend on weather and port authority advisories. We provide date-specific guidance.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-16 max-w-7xl px-6" data-reveal>
+        <div class="rounded-3xl border border-black/10 bg-white p-8 sm:p-10 lg:flex lg:items-center lg:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.15em] text-gold">Ready to Sail</p>
+            <h3 class="mt-2 font-heading text-2xl">Reserve Your Yacht Experience in Goa</h3>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3 lg:mt-0">
+            <a href="#" class="btn-gold btn-icon"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            <a href="#" class="btn-outline btn-icon"><i data-lucide="message-circle"></i><span>Chat</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer-dark border-t border-white/12 py-16">
+    <div class="footer-divider mx-auto mb-10 h-px w-full max-w-7xl"></div>
+    <div class="footer-grid mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-3">
+      <div>
+        <h4 class="footer-title">Yacht Club India</h4>
+        <p class="mt-1 max-w-sm text-sm text-textMuted">Private luxury charters designed for memorable sea experiences in Goa.</p>
+        <p class="mt-3 max-w-sm text-sm text-textMuted">From intimate sunset sails to bespoke celebration cruises, every charter is curated with premium hospitality and seamless concierge support.</p>
+        <p class="mt-3 text-xs tracking-[0.12em] uppercase text-gold/80">Luxury Private Charters • Goa</p>
+      </div>
+      <div>
+        <h4 class="footer-title">For Bookings</h4>
+        <p class="footer-copy">+91 ________</p>
+        <p class="footer-copy">+91 ________</p>
+        <p class="footer-copy">hello@yachtclubindia.com</p>
+        <p class="footer-copy">Brittona Jetty, Panjim, Goa</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <div class="grid gap-2 text-sm text-textMuted">
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="sparkles"></i><span>Experiences</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="ship"></i><span>Fleet</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="calendar-days"></i><span>Occasions</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="instagram"></i><span>Instagram</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom mx-auto mt-10 max-w-7xl border-t border-white/12 px-6 pt-6 text-xs text-textMuted">
+      <p>© 2026 Yacht Club India. All rights reserved.</p>
+      <div class="footer-social flex items-center gap-3">
+        <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="#" class="social-link" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M16.75 13.96c-.25-.13-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2.01-1.23-.74-.66-1.25-1.47-1.39-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09 0 1.23.9 2.42 1.02 2.58.12.17 1.76 2.69 4.27 3.77.6.26 1.07.41 1.44.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.17.21-.58.21-1.07.15-1.17-.05-.1-.21-.17-.46-.29zM12.02 2C6.52 2 2.06 6.45 2.06 11.94c0 1.76.46 3.49 1.33 5.01L2 22l5.2-1.36a9.93 9.93 0 0 0 4.82 1.23h.01c5.49 0 9.95-4.46 9.95-9.95A9.94 9.94 0 0 0 12.02 2zm0 18.08h-.01a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.08.81.82-3-.2-.31a8.24 8.24 0 0 1-1.27-4.38c0-4.57 3.72-8.29 8.3-8.29 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.43 5.85c0 4.58-3.72 8.3-8.29 8.3z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileDropTrigger = document.querySelector('.mobile-drop-trigger');
+    const mobileOccList = document.getElementById('mobile-occ-list');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header-scrolled', window.scrollY > 24);
+    });
+
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.hidden = expanded;
+      mobileMenu.classList.toggle('is-open', !expanded);
+    });
+
+    if (mobileDropTrigger && mobileOccList) {
+      mobileDropTrigger.addEventListener('click', () => {
+        const open = mobileDropTrigger.getAttribute('aria-expanded') === 'true';
+        mobileDropTrigger.setAttribute('aria-expanded', String(!open));
+        mobileOccList.hidden = open;
+      });
+    }
+
+    mobileMenu.querySelectorAll('a.mobile-link, a.mobile-sub-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.hidden = true;
+        mobileMenu.classList.remove('is-open');
+      });
+    });
+
+    document.querySelectorAll('.faq-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        panel.style.maxHeight = open ? null : panel.scrollHeight + 'px';
+      });
+    });
+
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealEls.forEach((el) => io.observe(el));
+
+    const experienceTrack = document.getElementById('experiences-track');
+    if (experienceTrack) {
+      const originalCards = Array.from(experienceTrack.children);
+      originalCards.forEach((card) => {
+        experienceTrack.appendChild(card.cloneNode(true));
+      });
+
+      let pauseAutoScroll = false;
+      const autoRotate = setInterval(() => {
+        if (pauseAutoScroll) return;
+        experienceTrack.scrollLeft += 1;
+        if (experienceTrack.scrollLeft >= experienceTrack.scrollWidth / 2) {
+          experienceTrack.scrollLeft = 0;
+        }
+      }, 22);
+
+      experienceTrack.querySelectorAll('.exp-card').forEach((card) => {
+        card.addEventListener('mouseenter', () => { pauseAutoScroll = true; });
+        card.addEventListener('mouseleave', () => { pauseAutoScroll = false; });
+        card.addEventListener('focusin', () => { pauseAutoScroll = true; });
+        card.addEventListener('focusout', () => { pauseAutoScroll = false; });
+      });
+
+      const expPrev = document.getElementById('exp-prev');
+      const expNext = document.getElementById('exp-next');
+      const moveTrack = (dir) => {
+        const card = experienceTrack.querySelector('.exp-card');
+        const step = card ? card.getBoundingClientRect().width + 24 : 320;
+        pauseAutoScroll = true;
+        experienceTrack.scrollBy({ left: dir * step, behavior: 'smooth' });
+        setTimeout(() => { pauseAutoScroll = false; }, 900);
+      };
+      if (expPrev) expPrev.addEventListener('click', () => moveTrack(-1));
+      if (expNext) expNext.addEventListener('click', () => moveTrack(1));
+
+      experienceTrack.addEventListener('touchstart', () => { pauseAutoScroll = true; }, { passive: true });
+      experienceTrack.addEventListener('touchend', () => { pauseAutoScroll = false; }, { passive: true });
+      window.addEventListener('beforeunload', () => {
+        clearInterval(autoRotate);
+      });
+    }
+
+    document.querySelectorAll('.testimonial-track').forEach((track) => {
+      const cards = Array.from(track.children);
+      const platformPool = ['google', 'instagram', 'facebook'];
+      const randomPlatform = () => platformPool[Math.floor(Math.random() * platformPool.length)];
+
+      cards.forEach((card) => {
+        if (card.querySelector('.testimonial-head')) return;
+        const platform = randomPlatform();
+        const platformMarkup =
+          platform === 'google'
+            ? '<span class="platform-dot">G</span>'
+            : `<span class="platform-dot"><i data-lucide="${platform}"></i></span>`;
+
+        const head = document.createElement('div');
+        head.className = 'testimonial-head';
+        head.innerHTML = `
+          <div class="testimonial-stars" aria-label="5 star rating">★★★★★</div>
+          <div class="testimonial-platforms" aria-label="Review platforms">
+            ${platformMarkup}
+          </div>
+        `;
+        card.prepend(head);
+      });
+
+      cards.forEach((card) => track.appendChild(card.cloneNode(true)));
+    });
+
+    const renderLucideIcons = () => {
+      if (!window.lucide) return false;
+      lucide.createIcons();
+      return true;
+    };
+
+    if (!renderLucideIcons()) {
+      const iconRetry = setInterval(() => {
+        if (renderLucideIcons()) clearInterval(iconRetry);
+      }, 300);
+      setTimeout(() => clearInterval(iconRetry), 4000);
+      window.addEventListener('load', renderLucideIcons, { once: true });
+    }
+  </script>
+</body>
+</html>

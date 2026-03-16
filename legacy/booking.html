@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Yacht | Yacht Club India</title>
+  <meta name="description" content="Book your private luxury yacht charter in Goa with date, time, and custom add-ons." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#06121F',
+            navySoft: '#EEF3F8',
+            navyCard: '#FFFFFF',
+            gold: '#C8A45D',
+            textMain: '#10233D',
+            textMuted: '#5F738A'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F4F7FB] text-[#10233D] antialiased">
+  <header id="site-header" class="fixed top-0 z-50 w-full transition-all duration-300">
+    <div class="header-wrap mx-auto max-w-7xl px-6 transition-all duration-300">
+      <nav class="flex h-20 items-center justify-between" aria-label="Primary">
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img src="images/logo.png" alt="Yacht Club India" class="h-10 w-auto" />
+        </a>
+
+        <ul class="hidden items-center gap-8 lg:flex">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="index.html#experiences">Experiences</a></li>
+          <li><a class="nav-link" href="index.html#fleet">Fleet</a></li>
+          <li class="relative group">
+            <button class="nav-link nav-trigger" aria-haspopup="true">
+              <span>Occasions</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="dropdown-panel absolute left-0 top-9 hidden min-w-52 rounded-xl border border-black/10 bg-white/95 p-2 group-hover:block group-focus-within:block">
+              <a href="index.html#occasions" class="dropdown-item">Proposals</a>
+              <a href="index.html#occasions" class="dropdown-item">Birthdays</a>
+              <a href="index.html#occasions" class="dropdown-item">Weddings</a>
+              <a href="index.html#occasions" class="dropdown-item">Corporate</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="index.html#about">About</a></li>
+          <li><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="hidden items-center gap-3 lg:flex">
+          <a href="#booking-form" class="btn-gold btn-icon"><i data-lucide="anchor"></i><span>Book Now</span></a>
+          <a href="#" class="btn-outline btn-icon"><i data-lucide="message-circle"></i><span>Chat with us</span></a>
+        </div>
+
+        <div class="flex items-center gap-2 lg:hidden">
+          <a href="#booking-form" class="mobile-quick-btn book" aria-label="Book Now">
+            <i data-lucide="anchor"></i>
+            <span>Book Now</span>
+          </a>
+          <button id="menu-toggle" class="inline-flex items-center rounded-lg border border-white/25 p-2 text-white" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+            <span class="text-lg">☰</span>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="mobile-menu lg:hidden" hidden>
+        <div class="mobile-menu-panel rounded-2xl border border-black/10 bg-white/95 p-5">
+          <p class="mobile-menu-label">Navigation</p>
+          <a class="mobile-link" href="index.html">Home</a>
+          <a class="mobile-link" href="index.html#experiences">Experiences</a>
+          <a class="mobile-link" href="index.html#fleet">Fleet</a>
+          <div class="mobile-dropdown">
+            <button class="mobile-link mobile-drop-trigger" type="button" aria-expanded="false" aria-controls="mobile-occ-list">
+              <span>Occasions</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div id="mobile-occ-list" class="mobile-drop-list" hidden>
+              <a href="index.html#occasions" class="mobile-sub-link">Proposals</a>
+              <a href="index.html#occasions" class="mobile-sub-link">Birthdays</a>
+              <a href="index.html#occasions" class="mobile-sub-link">Weddings</a>
+              <a href="index.html#occasions" class="mobile-sub-link">Corporate</a>
+            </div>
+          </div>
+          <a class="mobile-link" href="index.html#about">About</a>
+          <a class="mobile-link" href="index.html#contact">Contact</a>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <a href="#booking-form" class="btn-gold btn-icon text-center"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            <a href="#" class="btn-outline btn-icon text-center"><i data-lucide="message-circle"></i><span>Chat</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-32">
+    <section class="booking-product py-16">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div data-reveal>
+          <div class="booking-main-image">
+            <img id="booking-main-img" src="images/yacht.png" alt="Yacht gallery main image" />
+          </div>
+          <div class="mt-4 grid grid-cols-4 gap-3">
+            <button class="booking-thumb is-active" data-src="images/yacht.png"><img src="images/yacht.png" alt="Yacht view 1" /></button>
+            <button class="booking-thumb" data-src="images/c1.jpg"><img src="images/c1.jpg" alt="Yacht view 2" /></button>
+            <button class="booking-thumb" data-src="images/c2.jpg"><img src="images/c2.jpg" alt="Yacht view 3" /></button>
+            <button class="booking-thumb" data-src="images/c3.jpg"><img src="images/c3.jpg" alt="Yacht view 4" /></button>
+          </div>
+        </div>
+
+        <aside id="booking-form" class="booking-panel" data-reveal>
+          <p class="booking-label">Yacht Booking</p>
+          <h1 class="booking-title">Yacht Name Placeholder</h1>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <span class="badge">Up to ___ guests</span>
+            <span class="badge">___ hrs</span>
+            <span class="badge">Crew included</span>
+          </div>
+          <p class="booking-price mt-5">Starting from ₹____ <span>/ hour</span></p>
+          <p class="booking-copy mt-4">Select your date and departure time to reserve this yacht. Final itinerary and add-ons can be customized with concierge support.</p>
+
+          <form class="mt-7 space-y-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="booking-field">
+                <span>Departure Date</span>
+                <input type="date" />
+              </label>
+              <label class="booking-field">
+                <span>Departure Time</span>
+                <input type="time" />
+              </label>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="booking-field">
+                <span>Guests</span>
+                <input type="number" min="1" placeholder="No. of guests" />
+              </label>
+              <label class="booking-field">
+                <span>Duration</span>
+                <select>
+                  <option>2 Hours</option>
+                  <option>3 Hours</option>
+                  <option>4 Hours</option>
+                  <option>Sunset Slot</option>
+                  <option>Custom</option>
+                </select>
+              </label>
+            </div>
+            <label class="booking-field">
+              <span>Add-ons</span>
+              <select>
+                <option>Standard Package</option>
+                <option>Celebration Decor</option>
+                <option>Premium Dining Setup</option>
+                <option>Photo / Reel Shoot</option>
+              </select>
+            </label>
+            <button type="button" class="btn-gold btn-icon booking-submit"><i data-lucide="anchor"></i><span>Book Now</span></button>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-surface py-24">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="section-title no-divider text-left">Instagram Reels</h2>
+          <a href="#" class="btn-outline btn-icon"><i data-lucide="instagram"></i><span>Follow @yachtclubindia_</span></a>
+        </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="#" class="reel-card">
+            <img src="images/s1.jpg" alt="Instagram reel placeholder 1" />
+            <span class="reel-play"><i data-lucide="play"></i></span>
+          </a>
+          <a href="#" class="reel-card">
+            <img src="images/s2.jpg" alt="Instagram reel placeholder 2" />
+            <span class="reel-play"><i data-lucide="play"></i></span>
+          </a>
+          <a href="#" class="reel-card">
+            <img src="images/s3.jpg" alt="Instagram reel placeholder 3" />
+            <span class="reel-play"><i data-lucide="play"></i></span>
+          </a>
+          <a href="#" class="reel-card">
+            <img src="images/s4.jpg" alt="Instagram reel placeholder 4" />
+            <span class="reel-play"><i data-lucide="play"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#F4F7FB] py-24">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <h2 class="section-title">Sample Itinerary</h2>
+        <div class="itinerary-grid mt-10">
+          <article class="itinerary-card">
+            <span class="itinerary-time">00:00</span>
+            <h3 class="itinerary-head"><i data-lucide="ship"></i><span>Boarding & Welcome</span></h3>
+            <p>Meet crew at Brittona Jetty, safety briefing, welcome refreshments, and route briefing.</p>
+          </article>
+          <article class="itinerary-card">
+            <span class="itinerary-time">00:30</span>
+            <h3 class="itinerary-head"><i data-lucide="waves"></i><span>Scenic Cruise</span></h3>
+            <p>Leisure sail past signature Goa waterfront views with curated music and concierge service.</p>
+          </article>
+          <article class="itinerary-card">
+            <span class="itinerary-time">01:30</span>
+            <h3 class="itinerary-head"><i data-lucide="camera"></i><span>Anchor Stop</span></h3>
+            <p>Photo moments, celebration setup, and optional add-ons including decor and dining service.</p>
+          </article>
+          <article class="itinerary-card">
+            <span class="itinerary-time">02:30</span>
+            <h3 class="itinerary-head"><i data-lucide="sunset"></i><span>Sunset Return</span></h3>
+            <p>Return cruise with golden-hour views and smooth disembarkation support at the jetty.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-surface py-24">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <h2 class="section-title">Add-ons</h2>
+        <p class="section-subtitle">Enhance your charter with premium experiences, celebration elements, and curated services.</p>
+        <div class="addons-grid mt-10">
+          <article class="addon-card">
+            <h3>Celebration Decor</h3>
+            <p>Elegant theme setup with flowers, table styling, and custom celebration accents.</p>
+            <span class="addon-price">From ₹____</span>
+          </article>
+          <article class="addon-card">
+            <h3>Chef Curated Dining</h3>
+            <p>Onboard dining experiences with plated menus or premium sharing formats.</p>
+            <span class="addon-price">From ₹____</span>
+          </article>
+          <article class="addon-card">
+            <h3>Photography & Reels</h3>
+            <p>Professional photo and short-form reel coverage designed for social and memories.</p>
+            <span class="addon-price">From ₹____</span>
+          </article>
+          <article class="addon-card">
+            <h3>Live Music / DJ</h3>
+            <p>Acoustic or DJ setup for private parties, birthdays, and evening charters.</p>
+            <span class="addon-price">From ₹____</span>
+          </article>
+          <article class="addon-card">
+            <h3>Premium Beverage Service</h3>
+            <p>Curated beverage package tailored to your group size and celebration style.</p>
+            <span class="addon-price">From ₹____</span>
+          </article>
+          <article class="addon-card">
+            <h3>Proposal Setup</h3>
+            <p>Romantic deck arrangement with florals, signage, and concierge coordination.</p>
+            <span class="addon-price">From ₹____</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#F4F7FB] py-24">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <h2 class="section-title">Features & Offers</h2>
+        <p class="section-subtitle">What’s included in your booking and premium perks available for your charter.</p>
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="feature-card">
+            <i data-lucide="shield-check"></i>
+            <h3>Safety Assured</h3>
+            <p>Certified crew, safety gear, and compliant onboard protocols.</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="utensils"></i>
+            <h3>Premium Add-ons</h3>
+            <p>Optional dining setups, decor, music, and curated services.</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="clock-3"></i>
+            <h3>Flexible Slots</h3>
+            <p>Day, sunset, and evening sail windows to match your plans.</p>
+          </article>
+          <article class="feature-card offer">
+            <i data-lucide="gift"></i>
+            <h3>Seasonal Offer</h3>
+            <p>Early booking benefit available on selected weekday charters.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-surface py-24">
+      <div class="mx-auto max-w-4xl px-6" data-reveal>
+        <h2 class="section-title">Booking FAQs</h2>
+        <div class="mt-8 space-y-3" id="faq-list">
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">How much advance notice is required for booking?</button>
+            <div class="faq-panel">We recommend booking at least 48-72 hours in advance for preferred yachts and time slots.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">Can we modify guest count after booking?</button>
+            <div class="faq-panel">Yes, guest count can be adjusted based on yacht capacity and final confirmation cut-off time.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">Do you support custom occasions and decor?</button>
+            <div class="faq-panel">Absolutely. Share your occasion details and our team will tailor decor and onboard arrangements.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">What happens in case of weather disruption?</button>
+            <div class="faq-panel">Sailing depends on weather and port advisories. We offer rescheduling support for affected bookings.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer-dark border-t border-white/12 py-16">
+    <div class="footer-divider mx-auto mb-10 h-px w-full max-w-7xl"></div>
+    <div class="footer-grid mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-3">
+      <div>
+        <h4 class="footer-title">Yacht Club India</h4>
+        <p class="mt-1 max-w-sm text-sm text-textMuted">Private luxury charters designed for memorable sea experiences in Goa.</p>
+        <p class="mt-3 max-w-sm text-sm text-textMuted">From intimate sunset sails to bespoke celebration cruises, every charter is curated with premium hospitality and seamless concierge support.</p>
+        <p class="mt-3 text-xs tracking-[0.12em] uppercase text-gold/80">Luxury Private Charters • Goa</p>
+      </div>
+      <div>
+        <h4 class="footer-title">For Bookings</h4>
+        <p class="footer-copy">+91 ________</p>
+        <p class="footer-copy">+91 ________</p>
+        <p class="footer-copy">hello@yachtclubindia.com</p>
+        <p class="footer-copy">Brittona Jetty, Panjim, Goa</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <div class="grid gap-2 text-sm text-textMuted">
+          <a href="index.html#experiences" class="footer-link inline-flex items-center gap-2"><i data-lucide="sparkles"></i><span>Experiences</span></a>
+          <a href="index.html#fleet" class="footer-link inline-flex items-center gap-2"><i data-lucide="ship"></i><span>Fleet</span></a>
+          <a href="index.html#occasions" class="footer-link inline-flex items-center gap-2"><i data-lucide="calendar-days"></i><span>Occasions</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="instagram"></i><span>Instagram</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom mx-auto mt-10 max-w-7xl border-t border-white/12 px-6 pt-6 text-xs text-textMuted">
+      <p>© 2026 Yacht Club India. All rights reserved.</p>
+      <div class="footer-social flex items-center gap-3">
+        <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="#" class="social-link" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M16.75 13.96c-.25-.13-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2.01-1.23-.74-.66-1.25-1.47-1.39-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09 0 1.23.9 2.42 1.02 2.58.12.17 1.76 2.69 4.27 3.77.6.26 1.07.41 1.44.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.17.21-.58.21-1.07.15-1.17-.05-.1-.21-.17-.46-.29zM12.02 2C6.52 2 2.06 6.45 2.06 11.94c0 1.76.46 3.49 1.33 5.01L2 22l5.2-1.36a9.93 9.93 0 0 0 4.82 1.23h.01c5.49 0 9.95-4.46 9.95-9.95A9.94 9.94 0 0 0 12.02 2zm0 18.08h-.01a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.08.81.82-3-.2-.31a8.24 8.24 0 0 1-1.27-4.38c0-4.57 3.72-8.29 8.3-8.29 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.43 5.85c0 4.58-3.72 8.3-8.29 8.3z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileDropTrigger = document.querySelector('.mobile-drop-trigger');
+    const mobileOccList = document.getElementById('mobile-occ-list');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header-scrolled', window.scrollY > 24);
+    });
+
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.hidden = expanded;
+      mobileMenu.classList.toggle('is-open', !expanded);
+    });
+
+    if (mobileDropTrigger && mobileOccList) {
+      mobileDropTrigger.addEventListener('click', () => {
+        const open = mobileDropTrigger.getAttribute('aria-expanded') === 'true';
+        mobileDropTrigger.setAttribute('aria-expanded', String(!open));
+        mobileOccList.hidden = open;
+      });
+    }
+
+    mobileMenu.querySelectorAll('a.mobile-link, a.mobile-sub-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.hidden = true;
+        mobileMenu.classList.remove('is-open');
+      });
+    });
+
+    document.querySelectorAll('.faq-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        panel.style.maxHeight = open ? null : panel.scrollHeight + 'px';
+      });
+    });
+
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach((el) => io.observe(el));
+
+    const mainImg = document.getElementById('booking-main-img');
+    document.querySelectorAll('.booking-thumb').forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        const src = thumb.getAttribute('data-src');
+        if (!src || !mainImg) return;
+        mainImg.src = src;
+        document.querySelectorAll('.booking-thumb').forEach((b) => b.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+    });
+
+    const renderLucideIcons = () => {
+      if (!window.lucide) return false;
+      lucide.createIcons();
+      return true;
+    };
+    if (!renderLucideIcons()) {
+      const iconRetry = setInterval(() => {
+        if (renderLucideIcons()) clearInterval(iconRetry);
+      }, 300);
+      setTimeout(() => clearInterval(iconRetry), 4000);
+      window.addEventListener('load', renderLucideIcons, { once: true });
+    }
+  </script>
+</body>
+</html>

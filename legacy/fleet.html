@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Fleet | Yacht Club India</title>
+  <meta name="description" content="Explore the private luxury yacht fleet in Goa and choose your perfect charter." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#06121F',
+            navySoft: '#EEF3F8',
+            navyCard: '#FFFFFF',
+            gold: '#C8A45D',
+            textMain: '#10233D',
+            textMuted: '#5F738A'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F4F7FB] text-[#10233D] antialiased">
+  <header id="site-header" class="fixed top-0 z-50 w-full transition-all duration-300">
+    <div class="header-wrap mx-auto max-w-7xl px-6 transition-all duration-300">
+      <nav class="flex h-20 items-center justify-between" aria-label="Primary">
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img src="images/logo.png" alt="Yacht Club India" class="h-10 w-auto" />
+        </a>
+
+        <ul class="hidden items-center gap-8 lg:flex">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="index.html#experiences">Experiences</a></li>
+          <li><a class="nav-link is-active" href="fleet.html">Fleet</a></li>
+          <li class="relative group">
+            <button class="nav-link nav-trigger" aria-haspopup="true">
+              <span>Occasions</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="dropdown-panel absolute left-0 top-9 hidden min-w-52 rounded-xl border border-black/10 bg-white/95 p-2 group-hover:block group-focus-within:block">
+              <a href="index.html#occasions" class="dropdown-item">Proposals</a>
+              <a href="index.html#occasions" class="dropdown-item">Birthdays</a>
+              <a href="index.html#occasions" class="dropdown-item">Weddings</a>
+              <a href="index.html#occasions" class="dropdown-item">Corporate</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="index.html#about">About</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="hidden items-center gap-3 lg:flex">
+          <a href="booking.html" class="btn-gold btn-icon"><i data-lucide="anchor"></i><span>Book Now</span></a>
+          <a href="#" class="btn-outline btn-icon"><i data-lucide="message-circle"></i><span>Chat with us</span></a>
+        </div>
+
+        <div class="flex items-center gap-2 lg:hidden">
+          <a href="booking.html" class="mobile-quick-btn book" aria-label="Book Now">
+            <i data-lucide="anchor"></i>
+            <span>Book Now</span>
+          </a>
+          <button id="menu-toggle" class="inline-flex items-center rounded-lg border border-white/25 p-2 text-white" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+            <span class="text-lg">☰</span>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="mobile-menu lg:hidden" hidden>
+        <div class="mobile-menu-panel rounded-2xl border border-black/10 bg-white/95 p-5">
+          <p class="mobile-menu-label">Navigation</p>
+          <a class="mobile-link" href="index.html">Home</a>
+          <a class="mobile-link" href="index.html#experiences">Experiences</a>
+          <a class="mobile-link" href="fleet.html">Fleet</a>
+          <div class="mobile-dropdown">
+            <button class="mobile-link mobile-drop-trigger" type="button" aria-expanded="false" aria-controls="mobile-occ-list">
+              <span>Occasions</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div id="mobile-occ-list" class="mobile-drop-list" hidden>
+              <a href="index.html#occasions" class="mobile-sub-link">Proposals</a>
+              <a href="index.html#occasions" class="mobile-sub-link">Birthdays</a>
+              <a href="index.html#occasions" class="mobile-sub-link">Weddings</a>
+              <a href="index.html#occasions" class="mobile-sub-link">Corporate</a>
+            </div>
+          </div>
+          <a class="mobile-link" href="index.html#about">About</a>
+          <a class="mobile-link" href="#contact">Contact</a>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <a href="booking.html" class="btn-gold btn-icon text-center"><i data-lucide="anchor"></i><span>Book Now</span></a>
+            <a href="#" class="btn-outline btn-icon text-center"><i data-lucide="message-circle"></i><span>Chat</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-32">
+    <section class="section-surface py-16">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <h1 class="section-title no-divider text-left">Our Fleet</h1>
+        <p class="section-subtitle ml-0 mr-0 text-left">Discover available yachts, compare options, and shortlist the right charter for your plan.</p>
+
+        <form class="fleet-search-panel mt-10" aria-label="Fleet search form">
+          <div class="fleet-search-grid">
+            <label class="fleet-search-field">
+              <span>Yacht Name</span>
+              <input type="text" placeholder="Search yacht" />
+            </label>
+            <label class="fleet-search-field">
+              <span>Capacity</span>
+              <select>
+                <option>Any</option>
+                <option>Up to 8 guests</option>
+                <option>Up to 12 guests</option>
+                <option>Up to 20 guests</option>
+                <option>20+ guests</option>
+              </select>
+            </label>
+            <label class="fleet-search-field">
+              <span>Price Range</span>
+              <select>
+                <option>Any</option>
+                <option>₹ Low to Mid</option>
+                <option>₹₹ Mid to Premium</option>
+                <option>₹₹₹ Premium</option>
+              </select>
+            </label>
+            <label class="fleet-search-field">
+              <span>Duration</span>
+              <select>
+                <option>Any</option>
+                <option>2 Hours</option>
+                <option>3 Hours</option>
+                <option>4+ Hours</option>
+                <option>Sunset Slot</option>
+                <option>Custom Duration</option>
+              </select>
+            </label>
+            <label class="fleet-search-field">
+              <span>Type</span>
+              <select>
+                <option>Any</option>
+                <option>Private Charter</option>
+                <option>Premium Cruiser</option>
+                <option>Celebration Yacht</option>
+                <option>Corporate Hosting</option>
+              </select>
+            </label>
+            <label class="fleet-search-field">
+              <span>Sort</span>
+              <select>
+                <option>Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Capacity</option>
+                <option>Newest</option>
+              </select>
+            </label>
+          </div>
+          <div class="mt-5 flex flex-wrap justify-end gap-3">
+            <button class="btn-outline btn-icon" type="reset"><i data-lucide="rotate-ccw"></i><span>Reset</span></button>
+            <button class="btn-gold btn-icon" type="button"><i data-lucide="search"></i><span>Search Fleet</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="bg-[#F4F7FB] pb-24">
+      <div class="mx-auto max-w-7xl px-6" data-reveal>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag new">New</span>
+            </div>
+            <div class="image-ph fleet-image h-44"><img src="images/yacht.png" alt="Yacht placeholder image" /></div>
+            <div class="mt-3 flex gap-2 text-xs"><span class="badge">Up to ___ guests</span><span class="badge">___ hrs</span></div>
+            <div class="fleet-meta-row mt-3"><p class="card-meta">Starting from ₹____</p><a href="booking.html" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a></div>
+          </article>
+
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag featured">Featured</span>
+            </div>
+            <div class="image-ph fleet-image h-44"><img src="images/yacht.png" alt="Yacht placeholder image" /></div>
+            <div class="mt-3 flex gap-2 text-xs"><span class="badge">Up to ___ guests</span><span class="badge">___ hrs</span></div>
+            <div class="fleet-meta-row mt-3"><p class="card-meta">Starting from ₹____</p><a href="booking.html" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a></div>
+          </article>
+
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag best">Best Seller</span>
+            </div>
+            <div class="image-ph fleet-image h-44"><img src="images/yacht.png" alt="Yacht placeholder image" /></div>
+            <div class="mt-3 flex gap-2 text-xs"><span class="badge">Up to ___ guests</span><span class="badge">___ hrs</span></div>
+            <div class="fleet-meta-row mt-3"><p class="card-meta">Starting from ₹____</p><a href="booking.html" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a></div>
+          </article>
+
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag new">New</span>
+            </div>
+            <div class="image-ph fleet-image h-44"><img src="images/yacht.png" alt="Yacht placeholder image" /></div>
+            <div class="mt-3 flex gap-2 text-xs"><span class="badge">Up to ___ guests</span><span class="badge">___ hrs</span></div>
+            <div class="fleet-meta-row mt-3"><p class="card-meta">Starting from ₹____</p><a href="booking.html" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a></div>
+          </article>
+
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag featured">Featured</span>
+            </div>
+            <div class="image-ph fleet-image h-44"><img src="images/yacht.png" alt="Yacht placeholder image" /></div>
+            <div class="mt-3 flex gap-2 text-xs"><span class="badge">Up to ___ guests</span><span class="badge">___ hrs</span></div>
+            <div class="fleet-meta-row mt-3"><p class="card-meta">Starting from ₹____</p><a href="booking.html" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a></div>
+          </article>
+
+          <article class="fleet-card">
+            <div class="fleet-head">
+              <h3 class="fleet-title">Yacht Name Placeholder</h3>
+              <span class="fleet-tag best">Best Seller</span>
+            </div>
+            <div class="image-ph fleet-image h-44"><img src="images/yacht.png" alt="Yacht placeholder image" /></div>
+            <div class="mt-3 flex gap-2 text-xs"><span class="badge">Up to ___ guests</span><span class="badge">___ hrs</span></div>
+            <div class="fleet-meta-row mt-3"><p class="card-meta">Starting from ₹____</p><a href="booking.html" class="btn-gold btn-icon fleet-book-btn"><i data-lucide="anchor"></i><span>Book Now</span></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer-dark border-t border-white/12 py-16">
+    <div class="footer-divider mx-auto mb-10 h-px w-full max-w-7xl"></div>
+    <div class="footer-grid mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-3">
+      <div>
+        <h4 class="footer-title">Yacht Club India</h4>
+        <p class="mt-1 max-w-sm text-sm text-textMuted">Private luxury charters designed for memorable sea experiences in Goa.</p>
+        <p class="mt-3 max-w-sm text-sm text-textMuted">From intimate sunset sails to bespoke celebration cruises, every charter is curated with premium hospitality and seamless concierge support.</p>
+        <p class="mt-3 text-xs tracking-[0.12em] uppercase text-gold/80">Luxury Private Charters • Goa</p>
+      </div>
+      <div>
+        <h4 class="footer-title">For Bookings</h4>
+        <p class="footer-copy">+91 ________</p>
+        <p class="footer-copy">+91 ________</p>
+        <p class="footer-copy">hello@yachtclubindia.com</p>
+        <p class="footer-copy">Brittona Jetty, Panjim, Goa</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <div class="grid gap-2 text-sm text-textMuted">
+          <a href="index.html#experiences" class="footer-link inline-flex items-center gap-2"><i data-lucide="sparkles"></i><span>Experiences</span></a>
+          <a href="fleet.html" class="footer-link inline-flex items-center gap-2"><i data-lucide="ship"></i><span>Fleet</span></a>
+          <a href="index.html#occasions" class="footer-link inline-flex items-center gap-2"><i data-lucide="calendar-days"></i><span>Occasions</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="instagram"></i><span>Instagram</span></a>
+          <a href="#" class="footer-link inline-flex items-center gap-2"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom mx-auto mt-10 max-w-7xl border-t border-white/12 px-6 pt-6 text-xs text-textMuted">
+      <p>© 2026 Yacht Club India. All rights reserved.</p>
+      <div class="footer-social flex items-center gap-3">
+        <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="#" class="social-link" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M16.75 13.96c-.25-.13-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2.01-1.23-.74-.66-1.25-1.47-1.39-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09 0 1.23.9 2.42 1.02 2.58.12.17 1.76 2.69 4.27 3.77.6.26 1.07.41 1.44.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.17.21-.58.21-1.07.15-1.17-.05-.1-.21-.17-.46-.29zM12.02 2C6.52 2 2.06 6.45 2.06 11.94c0 1.76.46 3.49 1.33 5.01L2 22l5.2-1.36a9.93 9.93 0 0 0 4.82 1.23h.01c5.49 0 9.95-4.46 9.95-9.95A9.94 9.94 0 0 0 12.02 2zm0 18.08h-.01a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.08.81.82-3-.2-.31a8.24 8.24 0 0 1-1.27-4.38c0-4.57 3.72-8.29 8.3-8.29 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.43 5.85c0 4.58-3.72 8.3-8.29 8.3z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileDropTrigger = document.querySelector('.mobile-drop-trigger');
+    const mobileOccList = document.getElementById('mobile-occ-list');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header-scrolled', window.scrollY > 24);
+    });
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        mobileMenu.hidden = expanded;
+        mobileMenu.classList.toggle('is-open', !expanded);
+      });
+    }
+
+    if (mobileDropTrigger && mobileOccList) {
+      mobileDropTrigger.addEventListener('click', () => {
+        const open = mobileDropTrigger.getAttribute('aria-expanded') === 'true';
+        mobileDropTrigger.setAttribute('aria-expanded', String(!open));
+        mobileOccList.hidden = open;
+      });
+    }
+
+    if (mobileMenu) {
+      mobileMenu.querySelectorAll('a.mobile-link, a.mobile-sub-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (!menuToggle) return;
+          menuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenu.hidden = true;
+          mobileMenu.classList.remove('is-open');
+        });
+      });
+    }
+
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach((el) => io.observe(el));
+
+    const renderLucideIcons = () => {
+      if (!window.lucide) return false;
+      lucide.createIcons();
+      return true;
+    };
+
+    if (!renderLucideIcons()) {
+      const iconRetry = setInterval(() => {
+        if (renderLucideIcons()) clearInterval(iconRetry);
+      }, 300);
+      setTimeout(() => clearInterval(iconRetry), 4000);
+      window.addEventListener('load', renderLucideIcons, { once: true });
+    }
+  </script>
+</body>
+</html>
