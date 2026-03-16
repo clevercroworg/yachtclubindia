@@ -39,6 +39,7 @@ export default function CheckoutPage() {
     // Toggle optional fields
     const [showCompany, setShowCompany] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showFullScreenSpinner, setShowFullScreenSpinner] = useState(false);
 
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
@@ -199,6 +200,7 @@ export default function CheckoutPage() {
                                 paymentStatus: 'paid',
                             };
 
+                            setShowFullScreenSpinner(true);
                             const bookingResponse = await fetch('/api/bookings', {
                                 method: 'POST',
                                 headers: {
@@ -220,6 +222,7 @@ export default function CheckoutPage() {
                             const bookingId = result.booking?.id;
 
                             setIsSubmitting(false);
+                            setShowFullScreenSpinner(false);
 
                             if (bookingId) {
                                 await router.push(`/thank-you?bookingId=${bookingId}`);
@@ -227,10 +230,12 @@ export default function CheckoutPage() {
                             }
 
                             await router.push(`/thank-you?paymentId=${paymentDetails.razorpay_payment_id}`);
+                            setShowFullScreenSpinner(false);
                         } catch (err: any) {
                             console.error('Error saving booking after payment:', err);
                             alert('Payment succeeded, but we could not save the booking. Please reach out to support.');
                             setIsSubmitting(false);
+                            setShowFullScreenSpinner(false);
                         }
                     },
                     theme: {
@@ -242,11 +247,13 @@ export default function CheckoutPage() {
                     console.error('Razorpay payment failed:', response);
                     alert('Payment failed. Please try again or use another payment method.');
                     setIsSubmitting(false);
+                    setShowFullScreenSpinner(false);
                 });
 
                 rzp.on('checkout.modal.closed', () => {
                     console.log('[checkout] Razorpay modal closed');
                     setIsSubmitting(false);
+                    setShowFullScreenSpinner(false);
                 });
 
                 rzp.open();
@@ -257,6 +264,7 @@ export default function CheckoutPage() {
                 console.error('Error initiating payment:', error);
                 alert(error.message || 'Unable to process payment at the moment. Please try again later.');
                 setIsSubmitting(false);
+                setShowFullScreenSpinner(false);
             }
         };
 
@@ -264,6 +272,17 @@ export default function CheckoutPage() {
 
     return (
         <main className="pt-32 pb-24 min-h-screen" style={{ background: '#F7F8FA' }}>
+            {showFullScreenSpinner && (
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
+                    <div className="rounded-2xl bg-white px-6 py-5 shadow-xl flex items-center gap-3">
+                        <svg className="animate-spin h-5 w-5 text-[#10233D]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span className="text-sm font-semibold text-[#10233D]">Finalizing your booking...</span>
+                    </div>
+                </div>
+            )}
             <div className="mx-auto max-w-3xl px-6">
 
                 {/* Back link */}
