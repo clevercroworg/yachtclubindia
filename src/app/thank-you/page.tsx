@@ -45,7 +45,8 @@ export default async function ThankYouPage({ searchParams }: ThankYouProps) {
     : null;
 
   const addons = Array.isArray(booking?.addons) ? booking?.addons : [];
-  const addonDetails = addons
+  const addonIds = addons.filter((addonId): addonId is string => typeof addonId === 'string');
+  const addonDetails = addonIds
     .map((addonId) => getAddonById(addonId))
     .filter((addon): addon is { id: string; label: string; price: number } => Boolean(addon));
 
