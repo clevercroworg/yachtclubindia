@@ -19,6 +19,7 @@ const TIME_SLOT_LABELS: Record<string, string> = {
 type ThankYouProps = {
   searchParams: Promise<{
     bookingId?: string;
+    paymentId?: string;
   }>;
 };
 
@@ -33,8 +34,8 @@ const formatSlot = (slot?: string) => {
   return TIME_SLOT_LABELS[slot] || slot;
 };
 
-const formatCurrency = (paise?: number) => {
-  if (!paise) return '--';
+const formatCurrency = (paise?: number | null) => {
+  if (paise === null || paise === undefined) return '--';
   return (paise / 100).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
 };
 
@@ -42,7 +43,9 @@ export default async function ThankYouPage({ searchParams }: ThankYouProps) {
   const resolvedParams = await searchParams;
   const booking = resolvedParams.bookingId
     ? await prisma.booking.findUnique({ where: { id: resolvedParams.bookingId } })
-    : null;
+    : resolvedParams.paymentId
+      ? await prisma.booking.findFirst({ where: { razorpay_payment_id: resolvedParams.paymentId } })
+      : null;
 
   const addons = Array.isArray(booking?.addons) ? booking?.addons : [];
   const addonIds = addons.filter((addonId): addonId is string => typeof addonId === 'string');
@@ -102,10 +105,6 @@ export default async function ThankYouPage({ searchParams }: ThankYouProps) {
                   <span>Guests</span>
                   <span>{booking.guests || '--'}</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-textMuted">
-                  <span>Payment Status</span>
-                  <span className="text-gold font-semibold uppercase tracking-[0.3em]">{booking.payment_status || 'pending'}</span>
-                </div>
               </div>
               {addonDetails.length > 0 && (
                 <div className="rounded-2xl border border-black/5 p-4 space-y-2">
@@ -121,17 +120,17 @@ export default async function ThankYouPage({ searchParams }: ThankYouProps) {
               <div className="rounded-2xl border border-black/5 p-4 space-y-2">
                 <div className="flex items-center justify-between text-sm text-textMuted">
                   <span>Booking Status</span>
-                  <span className="text-gold font-semibold uppercase tracking-[0.3em]">{booking.status || 'pending'}</span>
+                  <span className="text-gold font-semibold">{booking.status ?? 'pending'}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm text-textMuted">
                   <span>Payment Status</span>
-                  <span className="text-gold font-semibold uppercase tracking-[0.3em]">{booking.payment_status || 'pending'}</span>
+                  <span className="text-gold font-semibold">{booking.payment_status ?? 'pending'}</span>
                 </div>
               </div>
             </div>
           ) : (
             <div className="rounded-2xl border border-black/5 p-6 text-center text-sm text-textMuted/80">
-              We could not find a recent booking reference. If you just submitted a request, give us a moment and refresh this page.
+              We are finalizing your booking. If this page does not update in a few seconds, please refresh.
             </div>
           )}
 

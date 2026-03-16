@@ -63,8 +63,21 @@ export async function POST(request: Request) {
     }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
     try {
+        const { searchParams } = new URL(request.url);
+        const paymentId = searchParams.get('paymentId');
+
+        if (paymentId) {
+            const booking = await prisma.booking.findFirst({
+                where: {
+                    razorpay_payment_id: paymentId
+                }
+            });
+
+            return NextResponse.json({ success: true, booking }, { status: 200 });
+        }
+
         const bookings = await prisma.booking.findMany({
             orderBy: {
                 createdAt: 'desc'

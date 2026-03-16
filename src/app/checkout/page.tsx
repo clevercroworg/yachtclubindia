@@ -219,12 +219,14 @@ export default function CheckoutPage() {
                             const result = await bookingResponse.json();
                             const bookingId = result.booking?.id;
 
-                            if (!bookingId) {
-                                throw new Error('Booking confirmation missing.');
+                            setIsSubmitting(false);
+
+                            if (bookingId) {
+                                await router.push(`/thank-you?bookingId=${bookingId}`);
+                                return;
                             }
 
-                            setIsSubmitting(false);
-                            await router.push(`/thank-you?bookingId=${bookingId}`);
+                            await router.push(`/thank-you?paymentId=${paymentDetails.razorpay_payment_id}`);
                         } catch (err: any) {
                             console.error('Error saving booking after payment:', err);
                             alert('Payment succeeded, but we could not save the booking. Please reach out to support.');

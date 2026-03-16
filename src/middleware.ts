@@ -1,12 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { verifyAuth } from './lib/auth'
+import { decrypt } from './lib/auth'
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl
 
     // 2. Protect /admin routes
     if (pathname.startsWith('/admin')) {
-        const payload = await verifyAuth()
+        const session = request.cookies.get('admin_session')?.value
+        const payload = session ? await decrypt(session) : null
         const user = payload ? payload.userId : null
 
         // Skip protection for the login/auth pages themselves
