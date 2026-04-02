@@ -50,6 +50,7 @@ export default function BookingPage() {
     const [guests, setGuests] = useState('');
     const [extraHours, setExtraHours] = useState(0);
     const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+    const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
 
     const [galleryImages, setGalleryImages] = useState<string[]>([
         '/images/yacht/phoenix-1.jpg',
@@ -94,7 +95,7 @@ export default function BookingPage() {
             const foundYacht = (fleetData as any[]).find((y: any) => y.id === yachtId);
             if (foundYacht) {
                 setSelectedYacht(foundYacht);
-                setMainImg(foundYacht.image);
+                setMainImg(foundYacht.images && foundYacht.images.length > 0 ? foundYacht.images[0] : foundYacht.image);
                 if (foundYacht.images && foundYacht.images.length > 0) {
                     setGalleryImages(foundYacht.images);
                 }
@@ -134,22 +135,43 @@ export default function BookingPage() {
             alert('Please select a Departure Date before proceeding.');
             return;
         }
-        if (!timeSlot) {
-            alert('Please select a Time Slot before proceeding.');
-            return;
-        }
 
-        if (guests && selectedYacht && parseInt(guests, 10) > parseInt(selectedYacht.capacity, 10)) {
-            alert(`A maximum of ${selectedYacht.capacity} guests is allowed for this yacht.`);
-            return;
+        const isTicket = selectedYacht?.pricingType === 'ticket';
+
+        if (isTicket) {
+            const hasTickets = Object.values(ticketQuantities).some(qty => qty > 0);
+            if (!hasTickets) {
+                alert('Please select at least one ticket package.');
+                return;
+            }
+        } else {
+            if (!timeSlot) {
+                alert('Please select a Time Slot before proceeding.');
+                return;
+            }
+            if (guests && selectedYacht && parseInt(guests, 10) > parseInt(selectedYacht.capacity, 10)) {
+                alert(`A maximum of ${selectedYacht.capacity} guests is allowed for this yacht.`);
+                return;
+            }
         }
 
         const params = new URLSearchParams();
         if (selectedYacht) params.set('yachtId', selectedYacht.id);
         params.set('date', date);
-        params.set('timeSlot', timeSlot);
-        if (guests) params.set('guests', guests);
-        params.set('extraHours', String(extraHours));
+
+        if (isTicket) {
+            const encodedTickets = Object.entries(ticketQuantities)
+                .filter(([_, qty]) => qty > 0)
+                .map(([id, qty]) => `${id}:${qty}`)
+                .join(',');
+            params.set('tickets', encodedTickets);
+            params.set('timeSlot', selectedYacht.timing || 'Fixed Timing');
+        } else {
+            params.set('timeSlot', timeSlot);
+            if (guests) params.set('guests', guests);
+            params.set('extraHours', String(extraHours));
+        }
+
         if (selectedAddons.length > 0) params.set('addons', selectedAddons.join(','));
 
         router.push(`/checkout?${params.toString()}`);
@@ -169,24 +191,41 @@ export default function BookingPage() {
                         </div>
 
                         <div className="booking-main-image relative h-[450px]">
-                            <Image
-                                src={mainImg}
-                                alt="Yacht gallery main image"
-                                fill
-                                className="object-cover rounded-2xl"
-                                priority
-                                unoptimized={mainImg.toLowerCase().endsWith('.dng')}
-                            />
+                            {mainImg?.endsWith('.mp4') ? (
+                                <video
+                                    src={mainImg}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="w-full h-full object-cover rounded-2xl"
+                                    style={{ objectPosition: selectedYacht?.id === 'princessa-dinner-cruise' ? 'top' : 'center' }}
+                                />
+                            ) : (
+                                <Image
+                                    src={mainImg}
+                                    alt="Yacht gallery main image"
+                                    fill
+                                    className="object-cover rounded-2xl"
+                                    style={{ objectPosition: selectedYacht?.id === 'princessa-dinner-cruise' ? 'top' : 'center' }}
+                                    priority
+                                    unoptimized={mainImg?.toLowerCase().endsWith('.dng')}
+                                />
+                            )}
                         </div>
                         <div className="mt-4 grid grid-cols-4 gap-3">
                             {galleryImages.slice(0, 4).map((src, idx) => (
-                                <button
-                                    key={idx}
-                                    className={`booking-thumb relative h-24 ${mainImg === src ? 'is-active base-active-border' : ''}`}
-                                    onClick={() => setMainImg(src)}
-                                >
-                                    <Image src={src} alt={`Yacht view ${idx + 1}`} fill className="object-cover rounded-xl" unoptimized={src.toLowerCase().endsWith('.dng')} />
-                                </button>
+                                    <button
+                                        key={idx}
+                                        className={`booking-thumb relative h-24 overflow-hidden rounded-xl ${mainImg === src ? 'is-active base-active-border' : ''}`}
+                                        onClick={() => setMainImg(src)}
+                                    >
+                                        {src?.endsWith('.mp4') ? (
+                                            <video src={src} className="w-full h-full object-cover pointer-events-none" muted playsInline />
+                                        ) : (
+                                            <Image src={src} alt={`Yacht view ${idx + 1}`} fill className="object-cover" style={{ objectPosition: selectedYacht?.id === 'princessa-dinner-cruise' ? 'top' : 'center' }} unoptimized={src.toLowerCase().endsWith('.dng')} />
+                                        )}
+                                    </button>
                             ))}
                         </div>
                     </div>
@@ -203,71 +242,99 @@ export default function BookingPage() {
                         <p className="booking-copy mt-6 border-t border-black/10 pt-4">Select your date and time slot to reserve this yacht. Final itinerary can be customized with concierge support.</p>
 
                         <form className="mt-7 space-y-4" onSubmit={handleCheckout}>
-                            <div className="grid gap-4 sm:grid-cols-2">
-                                <label className="booking-field">
-                                    <span>Departure Date</span>
-                                    <input type="date" min={minDate} value={date} onChange={(e) => setDate(e.target.value)} required />
-                                </label>
-                                <label className="booking-field">
-                                    <span>Guests (Max {selectedYacht ? selectedYacht.capacity : '12'})</span>
-                                    <input type="number" min="1" max={selectedYacht ? selectedYacht.capacity : "12"} placeholder="No. of guests" value={guests} onChange={(e) => setGuests(e.target.value)} required />
-                                </label>
-                            </div>
-                            <label className="booking-field">
-                                <span>Time Slot (2 hrs)</span>
-                                <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)} required>
-                                    <option value="" disabled>Select a time slot</option>
-                                    {TIME_SLOTS.map((slot) => (
-                                        <option key={slot.value} value={slot.value}>{slot.label}</option>
-                                    ))}
-                                </select>
-                            </label>
-                            <label className="booking-field">
-                                <span>Extra Hours</span>
-                                <select value={extraHours} onChange={(e) => setExtraHours(Number(e.target.value))}>
-                                    <option value={0}>No extra time</option>
-                                    <option value={2}>+2 Hours{selectedYacht?.pricePerHour ? ` (+₹${(selectedYacht.pricePerHour * 2).toLocaleString()})` : ''}</option>
-                                    <option value={3}>+3 Hours{selectedYacht?.pricePerHour ? ` (+₹${(selectedYacht.pricePerHour * 3).toLocaleString()})` : ''}</option>
-                                    <option value={4}>+4 Hours{selectedYacht?.pricePerHour ? ` (+₹${(selectedYacht.pricePerHour * 4).toLocaleString()})` : ''}</option>
-                                </select>
+                            <label className="booking-field block mb-4">
+                                <span>Departure Date</span>
+                                <input type="date" min={minDate} value={date} onChange={(e) => setDate(e.target.value)} className="w-full" required />
                             </label>
 
-                            {/* Add-ons */}
-                            <div>
-                                <p className="text-sm font-semibold text-textMain mb-3">Add-ons (optional)</p>
-                                <div className="space-y-2">
-                                    {ADDONS.map((addon) => {
-                                        const isSelected = selectedAddons.includes(addon.id);
-                                        const IconComp = ADDON_ICONS[addon.icon];
-                                        return (
-                                            <label
-                                                key={addon.id}
-                                                className="flex items-center gap-3 cursor-pointer select-none rounded-xl border px-4 py-3 transition-all hover:border-gold/40"
-                                                style={{
-                                                    borderColor: isSelected ? 'rgba(200,164,93,0.5)' : 'rgba(0,0,0,0.1)',
-                                                    background: isSelected ? 'rgba(200,164,93,0.07)' : 'transparent',
-                                                }}
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    checked={isSelected}
-                                                    onChange={() => {
-                                                        setSelectedAddons(prev =>
-                                                            prev.includes(addon.id)
-                                                                ? prev.filter(id => id !== addon.id)
-                                                                : [...prev, addon.id]
-                                                        );
-                                                    }}
-                                                    className="accent-gold w-4 h-4"
-                                                />
-                                                {IconComp && <IconComp className="w-4 h-4 text-gold" />}
-                                                <span className="text-sm font-semibold text-textMain flex-1">{addon.label}</span>
-                                                <span className="text-xs font-bold text-gold">₹{addon.price.toLocaleString()}</span>
-                                            </label>
-                                        );
-                                    })}
+                            {selectedYacht?.pricingType === 'ticket' ? (
+                                <div className="space-y-3 mt-4">
+                                    <p className="text-sm font-semibold text-textMain mb-2">Select Packages / Tickets</p>
+                                    {selectedYacht.packages?.map((pkg: any) => (
+                                        <div key={pkg.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl border border-black/10">
+                                            <div>
+                                                <p className="font-bold text-[#10233D]">{pkg.label}</p>
+                                                {pkg.description && <p className="text-xs text-[#4E5B6D] mt-1 pr-2">{pkg.description}</p>}
+                                                <p className="text-sm text-gold font-semibold mt-1">₹{pkg.price.toLocaleString()}</p>
+                                            </div>
+                                            <div className="flex items-center gap-3 shrink-0">
+                                                <button type="button" onClick={() => setTicketQuantities(prev => ({...prev, [pkg.id]: Math.max(0, (prev[pkg.id] || 0) - 1)}))} className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center hover:bg-black/5">-</button>
+                                                <span className="w-6 text-center font-bold">{ticketQuantities[pkg.id] || 0}</span>
+                                                <button type="button" onClick={() => setTicketQuantities(prev => ({...prev, [pkg.id]: (prev[pkg.id] || 0) + 1}))} className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center hover:bg-black/5">+</button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {selectedYacht?.timing && (
+                                        <div className="mt-4 p-4 rounded-xl bg-[#F4F7FB] text-sm text-[#4E5B6D]">
+                                            <strong className="text-[#10233D]">Event Timing:</strong> {selectedYacht.timing}
+                                        </div>
+                                    )}
                                 </div>
-                            </div>
+                            ) : (
+                                <>
+                                    <label className="booking-field">
+                                        <span>Guests (Max {selectedYacht ? selectedYacht.capacity : '12'})</span>
+                                        <input type="number" min="1" max={selectedYacht ? selectedYacht.capacity : "12"} placeholder="No. of guests" value={guests} onChange={(e) => setGuests(e.target.value)} required />
+                                    </label>
+                                    <label className="booking-field">
+                                        <span>Time Slot (2 hrs)</span>
+                                        <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)} required>
+                                            <option value="" disabled>Select a time slot</option>
+                                            {TIME_SLOTS.map((slot) => (
+                                                <option key={slot.value} value={slot.value}>{slot.label}</option>
+                                            ))}
+                                        </select>
+                                    </label>
+                                    <label className="booking-field">
+                                        <span>Extra Hours</span>
+                                        <select value={extraHours} onChange={(e) => setExtraHours(Number(e.target.value))}>
+                                            <option value={0}>No extra time</option>
+                                            <option value={2}>+2 Hours{selectedYacht?.pricePerHour ? ` (+₹${(selectedYacht.pricePerHour * 2).toLocaleString()})` : ''}</option>
+                                            <option value={3}>+3 Hours{selectedYacht?.pricePerHour ? ` (+₹${(selectedYacht.pricePerHour * 3).toLocaleString()})` : ''}</option>
+                                            <option value={4}>+4 Hours{selectedYacht?.pricePerHour ? ` (+₹${(selectedYacht.pricePerHour * 4).toLocaleString()})` : ''}</option>
+                                        </select>
+                                    </label>
+                                </>
+                            )}
+
+                            {/* Add-ons */}
+                            {!['nauti-buoy', 'rare-catamaran', 'water-sports-booking'].includes(selectedYacht?.id) && selectedYacht?.pricingType !== 'ticket' && (
+                                <div>
+                                    <p className="text-sm font-semibold text-textMain mb-3">Add-ons (optional)</p>
+                                    <div className="space-y-2">
+                                        {ADDONS.map((addon) => {
+                                            const isSelected = selectedAddons.includes(addon.id);
+                                            const IconComp = ADDON_ICONS[addon.icon];
+                                            return (
+                                                <label
+                                                    key={addon.id}
+                                                    className="flex items-center gap-3 cursor-pointer select-none rounded-xl border px-4 py-3 transition-all hover:border-gold/40"
+                                                    style={{
+                                                        borderColor: isSelected ? 'rgba(200,164,93,0.5)' : 'rgba(0,0,0,0.1)',
+                                                        background: isSelected ? 'rgba(200,164,93,0.07)' : 'transparent',
+                                                    }}
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={isSelected}
+                                                        onChange={() => {
+                                                            setSelectedAddons(prev =>
+                                                                prev.includes(addon.id)
+                                                                    ? prev.filter(id => id !== addon.id)
+                                                                    : [...prev, addon.id]
+                                                            );
+                                                        }}
+                                                        className="accent-gold w-4 h-4"
+                                                    />
+                                                    {IconComp && <IconComp className="w-4 h-4 text-gold" />}
+                                                    <span className="text-sm font-semibold text-textMain flex-1">{addon.label}</span>
+                                                    <span className="text-xs font-bold text-gold">₹{addon.price.toLocaleString()}</span>
+                                                </label>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
 
                             <button type="submit" className="btn-gold btn-icon booking-submit w-full mt-2 flex justify-center" style={{ width: '100%' }}>
                                 <Anchor className="w-5 h-5" />
@@ -287,7 +354,11 @@ export default function BookingPage() {
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {(showAllGallery ? galleryImages : galleryImages.slice(0, 8)).map((src, idx) => (
                             <div key={idx} className="relative h-64 sm:h-80 block overflow-hidden rounded-2xl group cursor-pointer hover:shadow-xl transition-all" onClick={() => setMainImg(src)}>
-                                <Image src={src} alt={`Yacht image ${idx + 1}`} fill className="object-cover transition-transform duration-700 group-hover:scale-105" unoptimized={src.toLowerCase().endsWith('.dng')} />
+                                {src?.endsWith('.mp4') ? (
+                                    <video src={src} loop autoPlay muted playsInline className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: selectedYacht?.id === 'princessa-dinner-cruise' ? 'top' : 'center' }} />
+                                ) : (
+                                    <Image src={src} alt={`Yacht image ${idx + 1}`} fill className="object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: selectedYacht?.id === 'princessa-dinner-cruise' ? 'top' : 'center' }} unoptimized={src.toLowerCase().endsWith('.dng')} />
+                                )}
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                             </div>
                         ))}

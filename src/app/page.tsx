@@ -78,13 +78,9 @@ function ExperiencesSection() {
         </div>
 
         <div className="relative" data-reveal="true">
-          <div ref={trackRef} className="flex gap-6 overflow-x-auto pb-2 pr-6 no-scrollbar" style={{ scrollSnapType: 'x mandatory' }}>
+          <div ref={trackRef} className="flex items-stretch gap-6 overflow-x-auto pb-4 pr-6 no-scrollbar" style={{ scrollSnapType: 'x mandatory' }}>
             {experiencesData.map((exp) => (
               <ExperienceCard key={exp.id} {...exp} />
-            ))}
-            {/* Duplicate for infinite scroll feel if needed */}
-            {experiencesData.map((exp) => (
-              <ExperienceCard key={`${exp.id}-dup`} {...exp} />
             ))}
           </div>
         </div>
@@ -118,16 +114,36 @@ function FleetSection() {
         <SectionTitle title="Our Fleet" subtitle="Handpicked yachts for private escapes, celebrations, and corporate hosting." />
 
         <div className="mb-8 flex flex-wrap items-center gap-3" data-reveal="true">
-          <button className="chip">Capacity ▾</button>
-          <button className="chip">Price ▾</button>
-          <button className="chip">Duration ▾</button>
-          <button className="chip">Type ▾</button>
-          <div className="ml-auto">
+          <select className="chip appearance-none bg-transparent pr-8">
+            <option value="" disabled hidden selected>Capacity ▾</option>
+            <option value="small">Up to 10</option>
+            <option value="medium">10 - 20</option>
+            <option value="large">20+</option>
+          </select>
+          <select className="chip appearance-none bg-transparent pr-8">
+            <option value="" disabled hidden selected>Price ▾</option>
+            <option value="low">Under ₹20,000</option>
+            <option value="high">₹20,000+</option>
+          </select>
+          <select className="chip appearance-none bg-transparent pr-8">
+            <option value="" disabled hidden selected>Duration ▾</option>
+            <option value="2h">2 Hours</option>
+            <option value="4h">4 Hours</option>
+            <option value="full">Full Day</option>
+          </select>
+          <select className="chip appearance-none bg-transparent pr-8">
+            <option value="" disabled hidden selected>Type ▾</option>
+            <option value="luxury">Luxury Yacht</option>
+            <option value="catamaran">Catamaran</option>
+            <option value="speedboat">Speedboat</option>
+          </select>
+          <div className="ml-auto relative">
             <label htmlFor="sort" className="sr-only">Sort</label>
-            <select id="sort" className="chip">
-              <option>Featured</option>
-              <option>Price</option>
-              <option>Capacity</option>
+            <select id="sort" className="chip appearance-none bg-transparent pr-8">
+              <option value="" disabled hidden selected>Sort by ▾</option>
+              <option value="featured">Featured</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -147,7 +163,6 @@ function OccasionsSection() {
     { title: 'Proposals', image: '/images/s1.jpg', href: '/occasions/proposals' },
     { title: 'Birthdays', image: '/images/s2.jpg', href: '/occasions/birthdays' },
     { title: 'Romantic Getaways', image: '/images/s3.jpg', href: '/occasions/romantic-getaways' },
-    { title: 'Weddings', image: '/images/s4.jpg', href: '/occasions/weddings' },
     { title: 'Corporate', image: '/images/s5.jpg', href: '/occasions/corporate' },
   ];
 
@@ -155,7 +170,7 @@ function OccasionsSection() {
     <section id="occasions" className="occasions-luxe py-28">
       <div className="mx-auto max-w-7xl px-6" data-reveal="true">
         <h2 className="section-title text-white">Occasions at Sea</h2>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {occasions.map((occ, idx) => (
             <Link key={idx} href={occ.href} className="occasion-tile">
               <Image src={occ.image} alt={occ.title} fill />
@@ -205,6 +220,74 @@ function LocationSection() {
             <MapPin className="w-4 h-4" />
             <span>Open in Google Maps</span>
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutUsSection() {
+  return (
+    <section id="about-us" className="bg-white py-28 border-t border-black/5">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl mx-auto text-center" data-reveal="true">
+          <SectionTitle title="About Yacht Club India" subtitle="Luxury made simple." align="center" noDivider />
+          <div className="mt-8 space-y-4 text-[#4E5B6D] text-lg leading-relaxed">
+            <p>
+              Founded in 2018, Yacht Club India was built to bring transparency and ease to yacht
+              bookings in Goa and across India. We are known for our reliable service,
+              premium yacht experiences, and customer-first approach.
+            </p>
+            <p>
+              From booking to on-ground support, we offer a seamless end-to-end experience
+              along with post-booking assistance to ensure everything goes smoothly. Whether
+              it&apos;s a celebration or a luxury getaway, we make every moment on the water
+              effortless and memorable.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-20 mb-10 text-center" data-reveal="true">
+          <SectionTitle title="Meet Our Team" subtitle="The visionaries behind Yacht Club India." align="center" noDivider={true} />
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-3" data-reveal="true">
+          <div className="rounded-2xl border border-black/5 bg-[#F4F7FB] p-8 transition-colors hover:border-gold/30 text-center">
+            <h3 className="font-heading text-xl text-[#10233D]">Pratheek Shetty</h3>
+            <p className="text-sm font-semibold tracking-widest text-gold uppercase mt-1 mb-4">Founder</p>
+            <p className="text-sm leading-relaxed text-[#4E5B6D]">
+              A passionate entrepreneur with a strong vision to simplify and elevate yacht booking
+              experiences in India, Pratheek Shetty founded Yacht Club India in 2018. With a focus
+              on transparency, customer satisfaction, and premium service, he has successfully built a
+              trusted platform for luxury yacht experiences. His hands-on approach and deep
+              understanding of client needs ensure seamless operations and unforgettable moments
+              for every customer.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-black/5 bg-[#F4F7FB] p-8 transition-colors hover:border-gold/30 text-center">
+            <h3 className="font-heading text-xl text-[#10233D]">Shreya G</h3>
+            <p className="text-sm font-semibold tracking-widest text-gold uppercase mt-1 mb-4">Co-Founder</p>
+            <p className="text-sm leading-relaxed text-[#4E5B6D]">
+              Shreya G plays a key role in shaping the customer experience and overall operations at
+              Yacht Club India. With a strong focus on service quality and attention to detail, she
+              ensures every booking is smooth and well-coordinated. Her dedication to delivering
+              memorable experiences and maintaining high standards has been instrumental in
+              building trust and long-term client relationships.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-black/5 bg-[#F4F7FB] p-8 transition-colors hover:border-gold/30 text-center">
+            <h3 className="font-heading text-xl text-[#10233D]">Akash Shetty</h3>
+            <p className="text-sm font-semibold tracking-widest text-gold uppercase mt-1 mb-4">Sales &amp; Marketing Head</p>
+            <p className="text-sm leading-relaxed text-[#4E5B6D]">
+              Akash Shetty leads the sales and marketing efforts at Yacht Club India, driving growth
+              and brand visibility. With a strong understanding of market trends and customer behavior,
+              he focuses on creating effective strategies that attract and convert clients. His dynamic
+              approach and commitment to results play a crucial role in expanding the company&apos;s
+              reach and delivering consistent business growth.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -358,6 +441,7 @@ export default function Home() {
       <FleetSection />
       <OccasionsSection />
       <LocationSection />
+      <AboutUsSection />
       <TestimonialsSection />
       <InstagramSection />
       <FAQSection />

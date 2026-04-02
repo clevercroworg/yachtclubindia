@@ -28,7 +28,7 @@ export function FleetCard({ id, title, image, capacity, duration, price, tag }: 
                 )}
             </div>
             <div className="image-ph h-44 fleet-image relative">
-                <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
+                <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" style={{ objectPosition: id === 'princessa-dinner-cruise' ? 'top' : 'center' }} />
             </div>
             <div className="mt-3 flex gap-2 text-xs">
                 <span className="badge">Up to {capacity} guests</span>

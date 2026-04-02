@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Anchor, MessageCircle, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import experiencesData from '@/data/experiences.json';
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -62,18 +63,17 @@ export default function Header() {
                                 <ChevronDown />
                             </button>
                             <div className="dropdown-panel absolute left-0 top-9 hidden min-w-52 rounded-xl border border-black/10 bg-white/95 p-2 shadow-lg backdrop-blur-sm group-hover:block group-focus-within:block">
-                                <Link href="/experiences" className="dropdown-item">All Experiences</Link>
+                                <Link href="/experiences" className="dropdown-item font-medium">All Experiences</Link>
                                 <div className="my-1 h-px bg-black/8"></div>
-                                <p className="px-2 pt-1 pb-1 text-[0.68rem] uppercase tracking-[0.14em] text-[#8a9bb0]">Occasions at Sea</p>
-                                <Link href="/occasions/proposals" className="dropdown-item">Proposals</Link>
-                                <Link href="/occasions/birthdays" className="dropdown-item">Birthdays</Link>
-                                <Link href="/occasions/romantic-getaways" className="dropdown-item">Romantic Getaways</Link>
-                                <Link href="/occasions/weddings" className="dropdown-item">Weddings</Link>
-                                <Link href="/occasions/corporate" className="dropdown-item">Corporate</Link>
+                                <p className="px-2 pt-1 pb-1 text-[0.68rem] uppercase tracking-[0.14em] text-[#8a9bb0]">Signature Settings</p>
+                                {experiencesData.map(exp => (
+                                    <Link key={exp.id} href={`/experiences/${exp.slug}`} className="dropdown-item">
+                                        {exp.title}
+                                    </Link>
+                                ))}
                             </div>
                         </li>
                         <li><Link className="nav-link" href="/fleet">Fleet</Link></li>
-                        {/* <li><Link className="nav-link" href="/#about">About</Link></li> */}
                         <li><Link className="nav-link" href="/contact">Contact</Link></li>
                     </ul>
 
@@ -117,16 +117,17 @@ export default function Header() {
                                 <ChevronDown />
                             </button>
                             <div id="mobile-exp-list" className="mobile-drop-list" hidden={!isOccasionsOpen}>
-                                <Link href="/experiences" className="mobile-sub-link" onClick={closeMenu}>All Experiences</Link>
-                                <Link href="/occasions/proposals" className="mobile-sub-link" onClick={closeMenu}>Proposals</Link>
-                                <Link href="/occasions/birthdays" className="mobile-sub-link" onClick={closeMenu}>Birthdays</Link>
-                                <Link href="/occasions/romantic-getaways" className="mobile-sub-link" onClick={closeMenu}>Romantic Getaways</Link>
-                                <Link href="/occasions/weddings" className="mobile-sub-link" onClick={closeMenu}>Weddings</Link>
-                                <Link href="/occasions/corporate" className="mobile-sub-link" onClick={closeMenu}>Corporate</Link>
+                                <Link href="/experiences" className="mobile-sub-link font-medium" onClick={closeMenu}>All Experiences</Link>
+                                <div className="my-2" />
+                                <p className="text-xs uppercase tracking-wider text-gray-500 mb-2 pl-3">Signature Settings</p>
+                                {experiencesData.map(exp => (
+                                    <Link key={exp.id} href={`/experiences/${exp.slug}`} className="mobile-sub-link" onClick={closeMenu}>
+                                        {exp.title}
+                                    </Link>
+                                ))}
                             </div>
                         </div>
                         <Link className="mobile-link" href="/fleet" onClick={closeMenu}>Fleet</Link>
-                        {/* <Link className="mobile-link" href="/#about" onClick={closeMenu}>About</Link> */}
                         <Link className="mobile-link" href="/contact" onClick={closeMenu}>Contact</Link>
                         <div className="mt-4 grid grid-cols-2 gap-3">
                             <Link href="/fleet" className="btn-gold btn-icon text-center" onClick={closeMenu}><Anchor /><span>Book Now</span></Link>

@@ -5,39 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Anchor, Compass, ShieldCheck, Sparkles, Clock3, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const occasions = [
-    {
-        title: 'Proposals',
-        image: '/images/s1.jpg',
-        href: '/occasions/proposals',
-        description: 'Create an unforgettable moment on the sea — private yacht setups designed for the perfect "yes" with curated decor, music, and ambience.',
-    },
-    {
-        title: 'Birthdays',
-        image: '/images/s2.jpg',
-        href: '/occasions/birthdays',
-        description: 'Celebrate your special day with exclusive yacht parties, personalised themes, onboard catering, and stunning coastal views.',
-    },
-    {
-        title: 'Romantic Getaways',
-        image: '/images/s3.jpg',
-        href: '/occasions/romantic-getaways',
-        description: 'Escape to the sea for an intimate cruise — sunset sails, candlelit dinners, and private moments crafted for two.',
-    },
-    {
-        title: 'Weddings',
-        image: '/images/s4.jpg',
-        href: '/occasions/weddings',
-        description: 'Say "I do" on the Arabian Sea with bespoke wedding charters — luxe décor, photography-ready backdrops, and full-service hosting.',
-    },
-    {
-        title: 'Corporate Events',
-        image: '/images/s5.jpg',
-        href: '/occasions/corporate',
-        description: 'Impress clients and reward teams with premium yacht hosting — ideal for offsites, networking events, and executive retreats.',
-    },
-];
+import experiencesData from '@/data/experiences.json';
 
 export default function ExperiencesPage() {
     useEffect(() => {
@@ -76,31 +44,31 @@ export default function ExperiencesPage() {
                     </p>
                     <div className="mt-8 flex flex-wrap gap-4">
                         <Button href="/fleet" variant="gold" icon={Anchor}>Book Experience</Button>
-                        <Button href="#occasions-grid" variant="outline" icon={Compass}>Explore Occasions</Button>
+                        <Button href="#experiences-grid" variant="outline" icon={Compass}>Explore Experiences</Button>
                     </div>
                 </div>
             </section>
 
-            {/* Occasions at Sea Grid */}
-            <section id="occasions-grid" className="section-surface py-24">
+            {/* Experiences Grid */}
+            <section id="experiences-grid" className="section-surface py-24">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="mb-12" data-reveal="true">
-                        <h2 className="section-title">Occasions at Sea</h2>
-                        <p className="section-subtitle">From dreamy proposals to corporate excellence — explore our curated yacht experiences designed for life&apos;s finest moments.</p>
+                        <h2 className="section-title">Signature Settings</h2>
+                        <p className="section-subtitle">From dreamy escapes to corporate excellence — explore our curated yacht experiences designed for life&apos;s finest moments.</p>
                     </div>
 
                     <div className="experience-grid" data-reveal="true">
-                        {occasions.map((occ, idx) => (
-                            <article key={idx} className={`experience-card ${idx === 0 ? 'featured' : ''}`}>
+                        {experiencesData.map((exp, idx) => (
+                            <article key={exp.id} className={`experience-card ${idx === 0 ? 'featured' : ''}`}>
                                 <div className="experience-card-media">
-                                    <Image src={occ.image} alt={occ.title} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
+                                    <Image src={exp.image} alt={exp.title} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
                                 </div>
                                 <div className="experience-card-body">
                                     {idx === 0 && <p className="experience-card-label">Most Popular</p>}
-                                    <h3>{occ.title}</h3>
-                                    <p>{occ.description}</p>
+                                    <h3>{exp.title}</h3>
+                                    <p>{exp.description}</p>
                                     <div className="experience-card-meta">
-                                        <Link href={occ.href} className="occasion-card-link">
+                                        <Link href={`/experiences/${exp.slug}`} className="occasion-card-link">
                                             <span>View More</span>
                                             <ArrowRight className="w-4 h-4" />
                                         </Link>

@@ -635,5 +635,258 @@
             "type": "featured",
             "label": "Ultra Luxe"
         }
+    },
+    {
+        "id": "nauti-buoy",
+        "isExclusive": true,
+        "title": "NAUTI BUOY",
+        "image": "/images/yacht/nauti%20buoy/nauti-1.jpg",
+        "images": [
+            "/vidoes/nauti%20buoy.mp4",
+            "/images/yacht/nauti%20buoy/nauti-1.jpg",
+            "/images/yacht/nauti%20buoy/nauti-2.jpg",
+            "/images/yacht/nauti%20buoy/nauti-3.jpg",
+            "/images/yacht/nauti%20buoy/nauti-4.jpg",
+            "/images/yacht/nauti%20buoy/nauti-5.jpg",
+            "/images/yacht/nauti%20buoy/nauti-6.jpg",
+            "/images/yacht/nauti%20buoy/nauti-7.jpg",
+            "/images/yacht/nauti%20buoy/nauti-8.jpg",
+            "/images/yacht/nauti%20buoy/nauti-9.jpg",
+            "/images/yacht/nauti%20buoy/nauti-10.jpg",
+            "/images/yacht/nauti%20buoy/nauti-11.jpg",
+            "/images/yacht/nauti%20buoy/nauti-12.jpg"
+        ],
+        "capacity": "12",
+        "duration": "2",
+        "price": "₹15,000",
+        "pricePerHour": 7500,
+        "series": "EXCL",
+        "route": "Baina Beach - Bat Island, Grande Island, St. Jorge Island, Shoe Rock.",
+        "features": [
+            "Swimming & Snorkeling",
+            "Fishing available on request",
+            "Scenic gems along the coast"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Fishing",
+            "Snorkeling Gear",
+            "Swimming"
+        ],
+        "foodOptions": "Additional food or beverages can be arranged at a nominal charge.",
+        "bestSuitedFor": [
+            "Island Adventures",
+            "Scenic Coastal Routes",
+            "Exclusive Trips"
+        ],
+        "highlight": "Say goodbye to long, crowded passenger boat rides. Discover scenic gems along the coast.",
+        "tag": {
+            "type": "featured",
+            "label": "Exclusive Route"
+        }
+    },
+    {
+        "id": "rare-catamaran",
+        "isExclusive": true,
+        "title": "Rare Catamaran",
+        "image": "/images/yacht/rare%20catamaran/rare-cat-1.jpg",
+        "images": [
+            "/images/yacht/rare%20catamaran/rare-cat-1.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-2.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-3.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-4.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-5.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-6.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-7.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-8.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-9.jpg",
+            "/images/yacht/rare%20catamaran/rare-cat-10.jpg"
+        ],
+        "capacity": "17",
+        "duration": "2",
+        "price": "₹20,000",
+        "pricePerHour": 10000,
+        "series": "EXCL",
+        "route": "Adventure trips in South Goa.",
+        "features": [
+            "Unique catamaran layout",
+            "Unmatched stability",
+            "Panoramic ocean views",
+            "Designed specifically for adventure trips"
+        ],
+        "inclusions": [
+            "Ice",
+            "Drinking water",
+            "Soft drinks",
+            "Music system",
+            "Swimming",
+            "Snorkeling",
+            "Fishing"
+        ],
+        "foodOptions": "Guests are allowed to bring their own food and beverages.",
+        "bestSuitedFor": [
+            "Adventure Trips",
+            "Large Groups",
+            "Scenic Coastline",
+            "Exclusive Trips"
+        ],
+        "highlight": "Set sail on our unique catamaran layout designed specifically for adventure trips in South Goa, blending comfort with scenic adventure.",
+        "tag": {
+            "type": "featured",
+            "label": "Rare Fleet"
+        }
+    },
+    {
+        "id": "super-luxury-cruise",
+        "title": "SUPER LUXURY CRUISE",
+        "pricingType": "ticket",
+        "packages": [
+            { "id": "silver", "label": "Silver Package", "price": 2500, "description": "2 hard drinks + unlimited soft drinks + Unlimited food and starters" },
+            { "id": "gold", "label": "Gold Package", "price": 3200, "description": "5 hard drinks + unlimited soft drinks + Unlimited food and starters" },
+            { "id": "platinum", "label": "Platinum Package", "price": 3600, "description": "Unlimited hard drinks + unlimited soft drinks + Unlimited food and starters" }
+        ],
+        "image": "/images/yacht/super-luxury-cruise/luxury-1.jpeg",
+        "images": [
+            "/images/yacht/super-luxury-cruise/luxury-1.jpeg",
+            "/images/yacht/super-luxury-cruise/luxury-2.jpeg",
+            "/images/yacht/super-luxury-cruise/luxury-3.jpeg",
+            "/images/yacht/super-luxury-cruise/luxury-4.jpeg",
+            "/images/yacht/super-luxury-cruise/luxury-5.jpeg",
+            "/images/yacht/super-luxury-cruise/luxury-6.jpeg"
+        ],
+        "capacity": "200",
+        "duration": "3",
+        "timing": "6PM-10PM",
+        "price": "₹2,500",
+        "pricePerHour": 0,
+        "series": "CRUISE",
+        "route": "Mandovi River Dinner Cruise",
+        "features": [
+            "Goa's Only Floating Luxury Cruise",
+            "Triple Decker Cruise",
+            "AC VIP Lounge",
+            "Premium Sofa Seating",
+            "Open Deck",
+            "Live DJ",
+            "Onboard Bar",
+            "Multiple Dance Performances",
+            "Fun Games",
+            "Sightseeing"
+        ],
+        "inclusions": [
+            "Savory Soup",
+            "Tasty Dinner Buffet",
+            "Scrumptious Starters",
+            "Open Dance Floor",
+            "Chilled Drinks"
+        ],
+        "foodOptions": "Starters (Crunchy Strips, Cheese Corn Balls), Soup, Main Course (Mutter Paneer, Butter Chicken, Biryani), Salads, Desserts",
+        "bestSuitedFor": [
+            "Parties",
+            "Celebrations",
+            "Dinner Cruise"
+        ],
+        "highlight": "Goa's Only Floating Luxury Cruise. Sail, Dine, Drink, Dance, and Celebrate on a Triple Decker.",
+        "tag": {
+            "type": "new",
+            "label": "Luxury Cruise"
+        }
+    },
+    {
+        "id": "princessa-dinner-cruise",
+        "title": "PRINCESSA DINNER CRUISE",
+        "pricingType": "ticket",
+        "packages": [
+            { "id": "adult", "label": "Offer Price (10yrs+)", "price": 1200, "description": "Platted Snacks + 2 Complimentary Drinks + Buffet Dinner" },
+            { "id": "child", "label": "Child (5 to 10yrs)", "price": 800, "description": "Platted Snacks + Buffet Dinner" }
+        ],
+        "image": "/images/yacht.png",
+        "images": [
+            "/vidoes/princessa.mp4",
+            "/images/yacht.png"
+        ],
+        "capacity": "200",
+        "duration": "2.5",
+        "timing": "8.30pm to 11pm",
+        "price": "₹1,200",
+        "pricePerHour": 0,
+        "series": "CRUISE",
+        "route": "Mandovi River Dinner Cruise",
+        "features": [
+            "Live Goan & Portuguese Folk Dance Performances",
+            "Live Magic Shows For Kids",
+            "Live DJ – Best of Bollywood Music",
+            "Fun Games with Prizes"
+        ],
+        "inclusions": [
+            "Platted Snacks",
+            "Complimentary Tequila Shots",
+            "2 Complimentary Drinks (Alcoholic or Non Alcoholic)",
+            "Buffet Dinner (Veg & Non Veg Options)"
+        ],
+        "foodOptions": "Veg Manchurian Balls, Cheese balls, Veg Biriyani, Paneer Masala, Chicken Masala, Sea Food Chilly, 1 Desert.",
+        "bestSuitedFor": [
+            "Family Events",
+            "Kids",
+            "Dinner Cruise"
+        ],
+        "highlight": "8.30pm to 11pm Dinner Cruise featuring live Goan/Portuguese Folk Dance and Magic Shows for Kids.",
+        "tag": {
+            "type": "best",
+            "label": "Family Cruise"
+        }
+    },
+    {
+        "id": "water-sports-booking",
+        "isExclusive": true,
+        "title": "Baina Beach Water Sports",
+        "pricingType": "ticket",
+        "packages": [
+            { "id": "parasail-single", "label": "Parasailing (Single)", "price": 1200, "description": "Duration: 1.5 mins" },
+            { "id": "parasail-double", "label": "Parasailing (Double/2 Person)", "price": 2000, "description": "Duration: 1.5 mins" },
+            { "id": "jetski-single", "label": "Jet Ski (Single Ride)", "price": 500, "description": "Distance: 200 Mtrs" },
+            { "id": "jetski-self", "label": "Jet Ski Self Driving with Instructor", "price": 2500, "description": "Duration: 10 mins" },
+            { "id": "banana", "label": "Banana Ride", "price": 1000, "description": "Per Single Ride For 5 People (200 Mtrs)" },
+            { "id": "bumper", "label": "Bumper Ride (Ringo)", "price": 600, "description": "Per Single Ride For 2 People (200 Mtrs)" },
+            { "id": "boat-ride", "label": "Boat Ride", "price": 4000, "description": "Min 8 Person on 8 Seater Boat (30 mins)" },
+            { "id": "combo1", "label": "Package 1: 4 Rides", "price": 1900, "description": "Parasailing, Jet Ski, Banana & Bumper Ride" },
+            { "id": "combo2", "label": "Package 2: 3 Rides", "price": 1600, "description": "Parasailing, Jet Ski, Choice of Banana or Bumper" },
+            { "id": "combo3", "label": "Package 3: 2 Rides", "price": 1100, "description": "Jet Ski, Choice of Banana or Bumper" }
+        ],
+        "image": "/images/c5.jpg",
+        "images": [
+            "/images/c5.jpg"
+        ],
+        "capacity": "100",
+        "duration": "Flexible",
+        "timing": "9:00 AM to 5:00 PM",
+        "price": "₹500",
+        "pricePerHour": 0,
+        "series": "SPORTS",
+        "route": "Baina Beach",
+        "features": [
+            "Goa Tourism Development Corporation Approved",
+            "Certified Instructors",
+            "Safety Gear Provided",
+            "Thrilling Experience"
+        ],
+        "inclusions": [
+            "Life Jacket",
+            "Safety Briefing"
+        ],
+        "foodOptions": "N/A",
+        "bestSuitedFor": [
+            "Adventure Seekers",
+            "Families",
+            "Friends"
+        ],
+        "highlight": "Experience the ultimate thrill at Baina Beach with our comprehensive water sports rides and combos.",
+        "tag": {
+            "type": "featured",
+            "label": "Water Sports"
+        }
     }
 ]

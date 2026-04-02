@@ -1,58 +1,42 @@
 [
     {
-        "id": "e1",
-        "title": "Private Charters",
-        "description": "Exclusive yacht time tailored for your group.",
-        "price": "Starting from ₹____",
+        "id": "private-yacht-charter",
+        "title": "Private Yacht Charter",
+        "slug": "private-yacht-charter",
+        "description": "Exclusive yacht time tailored for your group, complete with premium service.",
+        "price": "Starting from ₹7,500 / hr",
         "image": "/images/c1.jpg"
     },
     {
-        "id": "e2",
-        "title": "Sunset Cruises",
-        "description": "Golden-hour sailing with premium service onboard.",
-        "price": "Starting from ₹____",
-        "image": "/images/c2.jpg"
-    },
-    {
-        "id": "e3",
+        "id": "dinner-cruises",
         "title": "Dinner Cruises",
-        "description": "Fine dining ambience on calm evening waters.",
-        "price": "Starting from ₹____",
+        "slug": "dinner-cruises",
+        "description": "Fine dining ambience on calm evening waters with private seating.",
+        "price": "Starting from ₹12,000",
         "image": "/images/c3.jpg"
     },
     {
-        "id": "e4",
-        "title": "Adventure Island Trips",
-        "description": "Explore hidden shorelines and island routes.",
-        "price": "Starting from ₹____",
+        "id": "island-adventure",
+        "title": "Island and Adventure Trips in South Goa",
+        "slug": "island-adventure-south-goa",
+        "description": "Explore hidden shorelines and pristine island routes off the Goan coast.",
+        "price": "Starting from ₹15,000",
         "image": "/images/c4.jpg"
     },
     {
-        "id": "e5",
-        "title": "Pre-Wedding Shoots",
-        "description": "Elegant backdrops for timeless celebrations.",
-        "price": "Starting from ₹____",
-        "image": "/images/c5.jpg"
+        "id": "water-sports",
+        "title": "Water Sports",
+        "slug": "water-sports",
+        "description": "Thrilling water sports and sea activities right from the deck of your yacht.",
+        "price": "Available on request",
+        "image": "/images/c2.jpg"
     },
     {
-        "id": "e6",
-        "title": "Corporate Events",
-        "description": "Premium hosting for teams and clients at sea.",
-        "price": "Starting from ₹____",
+        "id": "private-event-cruises",
+        "title": "Private Event Cruises",
+        "slug": "private-event-cruises",
+        "description": "Premium hosting for parties, celebrations, and events seamlessly at sea.",
+        "price": "Custom packages",
         "image": "/images/c6.jpg"
-    },
-    {
-        "id": "e7",
-        "title": "Anniversary Celebrations",
-        "description": "Private moments with curated onboard ambience.",
-        "price": "Starting from ₹____",
-        "image": "/images/c7.jpg"
-    },
-    {
-        "id": "e8",
-        "title": "Luxury Day Escapes",
-        "description": "Half-day and full-day premium sea itineraries.",
-        "price": "Starting from ₹____",
-        "image": "/images/c8.jpg"
     }
 ]

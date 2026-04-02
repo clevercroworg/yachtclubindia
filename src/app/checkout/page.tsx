@@ -54,6 +54,7 @@ export default function CheckoutPage() {
             guests: searchParams.get('guests'),
             extraHours: [0, 2, 3, 4].includes(extraHoursRaw) ? extraHoursRaw : 0,
             addons: addonsRaw ? addonsRaw.split(',').filter(id => ADDONS.some(a => a.id === id)) : [],
+            tickets: searchParams.get('tickets') || null,
         };
 
         if (data.yachtId) {
@@ -90,7 +91,20 @@ export default function CheckoutPage() {
         }, 0);
     };
 
-    const charterCost = (yacht?.pricePerHour || 0) * getHours();
+    const getTicketsCost = () => {
+        if (!bookingData?.tickets || !yacht?.packages) return 0;
+        const ticketPairs = bookingData.tickets.split(',');
+        return ticketPairs.reduce((sum: number, pair: string) => {
+            const [id, qtyStr] = pair.split(':');
+            const qty = parseInt(qtyStr, 10) || 0;
+            const pkg = yacht.packages.find((p: any) => p.id === id);
+            if (pkg) sum += pkg.price * qty;
+            return sum;
+        }, 0);
+    };
+
+    const isTicket = yacht?.pricingType === 'ticket';
+    const charterCost = isTicket ? getTicketsCost() : (yacht?.pricePerHour || 0) * getHours();
     const addonsCost = getAddonsCost();
     const subtotal = (charterCost + addonsCost) * quantity;
 
@@ -146,10 +160,11 @@ export default function CheckoutPage() {
             yachtId: yacht.id,
             date: bookingData.date,
             timeSlot: bookingData.timeSlot,
-            guests: bookingData.guests,
-            extraHours: bookingData.extraHours,
+            tickets: bookingData.tickets,
+            guests: isTicket ? 'N/A' : bookingData.guests,
+            extraHours: isTicket ? 'N/A' : bookingData.extraHours,
             addons: bookingData.addons ?? [],
-            hours: getHours(),
+            hours: isTicket ? yacht.duration : getHours(),
             charterCost,
             addonsCost,
             quantity,
@@ -345,13 +360,27 @@ export default function CheckoutPage() {
                                                 </div>
                                                 <div className="flex gap-2 items-start sm:items-center">
                                                     <Clock className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5 sm:mt-0" />
-                                                    <span className="leading-snug break-words">Slot: {formatSlot(bookingData?.timeSlot)} ({getHours()} hrs{bookingData?.extraHours > 0 ? ` incl. +${bookingData.extraHours} hr extra` : ''})</span>
+                                                    <span className="leading-snug break-words">Slot: {formatSlot(bookingData?.timeSlot)} {isTicket ? '' : `(${getHours()} hrs`}{!isTicket && bookingData?.extraHours > 0 ? ` incl. +${bookingData.extraHours} hr extra)` : (!isTicket ? ')' : '')}</span>
                                                 </div>
-                                                <div className="flex gap-2 items-center">
-                                                    <Users className="w-3.5 h-3.5 text-gold shrink-0" />
-                                                    <span className="leading-snug">Guests: {bookingData?.guests || '--'}</span>
-                                                </div>
-                                                <div className="flex gap-2 items-center">
+                                                {!isTicket && (
+                                                    <div className="flex gap-2 items-center">
+                                                        <Users className="w-3.5 h-3.5 text-gold shrink-0" />
+                                                        <span className="leading-snug">Guests: {bookingData?.guests || '--'}</span>
+                                                    </div>
+                                                )}
+                                                {isTicket && bookingData?.tickets && (
+                                                    <div className="flex gap-2 items-start mt-2 border-t border-black/5 pt-2">
+                                                        <Users className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
+                                                        <div className="flex flex-col gap-1">
+                                                            {bookingData.tickets.split(',').map((pair: string, i: number) => {
+                                                                const [id, qty] = pair.split(':');
+                                                                const pkg = yacht?.packages?.find((p: any) => p.id === id);
+                                                                return <span key={i} className="leading-snug text-xs font-semibold text-[#10233D]">{qty} × {pkg ? pkg.label : id}</span>;
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                <div className="flex gap-2 items-center mt-1">
                                                     <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
                                                     <span className="leading-snug">Zone: Asia/Kolkata</span>
                                                 </div>
@@ -385,7 +414,7 @@ export default function CheckoutPage() {
 
                                         <div className="text-right">
                                             <p className="text-xl font-black font-jakarta text-textMain">₹{charterCost.toLocaleString()}</p>
-                                            <p className="text-xs text-textMuted mt-1">{yacht.price}/hr × {getHours()} hrs</p>
+                                            <p className="text-xs text-textMuted mt-1">{isTicket ? 'Total Package Cost' : `${yacht.price}/hr × ${getHours()} hrs`}</p>
                                             {addonsCost > 0 && (
                                                 <p className="text-xs text-gold mt-1 font-semibold">+ ₹{addonsCost.toLocaleString()} add-ons</p>
                                             )}
