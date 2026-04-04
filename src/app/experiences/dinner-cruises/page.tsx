@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/button';
 import { InstagramEmbed } from '@/components/ui/InstagramEmbed';
 
 const galleryImages = [
-    { src: '/images/yacht/leopard/leopard-1.jpg', alt: 'Dinner Cruise 1' },
-    { src: '/images/yacht/leopard/leopard-2.jpg', alt: 'Dinner Cruise 2' },
-    { src: '/images/yacht/leopard/leopard-3.jpg', alt: 'Dinner Cruise 3' },
-    { src: '/images/yacht/leopard/leopard-4.jpg', alt: 'Dinner Cruise 4' },
-    { src: '/images/yacht/leopard/leopard-5.jpg', alt: 'Dinner Cruise 5' },
-    { src: '/images/yacht/leopard/leopard-6.jpg', alt: 'Dinner Cruise 6' },
+    { src: '/images/yacht/princessa-dinner-cruise/princessa-1.jpeg', alt: 'Dinner Cruise 1' },
+    { src: '/images/yacht/princessa-dinner-cruise/princessa-2.jpeg', alt: 'Dinner Cruise 2' },
+    { src: '/images/yacht/princessa-dinner-cruise/princessa-3.jpeg', alt: 'Dinner Cruise 3' },
+    { src: '/images/yacht/princessa-dinner-cruise/princessa-4.jpeg', alt: 'Dinner Cruise 4' },
+    { src: '/images/yacht/princessa-dinner-cruise/princessa-5.jpeg', alt: 'Dinner Cruise 5' },
+    { src: '/images/yacht/princessa-dinner-cruise/princessa-6.jpeg', alt: 'Dinner Cruise 6' },
 ];
 
 export default function DinnerCruisesPage() {
