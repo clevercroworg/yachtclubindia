@@ -112,3 +112,28 @@ export async function PATCH(request: Request) {
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
+
+export async function DELETE(request: Request) {
+    try {
+        const body = await request.json();
+        const { ids } = body;
+
+        if (!ids || !Array.isArray(ids) || ids.length === 0) {
+            return NextResponse.json({ error: 'Missing or invalid ids array.' }, { status: 400 });
+        }
+
+        const result = await prisma.booking.deleteMany({
+            where: {
+                id: {
+                    in: ids
+                }
+            }
+        });
+
+        return NextResponse.json({ success: true, count: result.count }, { status: 200 });
+
+    } catch (err: any) {
+        console.error('Server error handling booking DELETE:', err);
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    }
+}
