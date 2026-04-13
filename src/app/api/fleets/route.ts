@@ -2,10 +2,13 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/db';
 import fleetData from '@/data/fleet.json'; // Fallback import
 
+// Helper: for Prisma Json fields, use undefined instead of null
+const jsonOrUndefined = (val: any) => val ? JSON.stringify(val) : undefined;
+
 export async function GET(request: Request) {
     try {
         // We will try grabbing from database first
-        let fleets = [];
+        let fleets: any[] = [];
         try {
             fleets = await prisma.fleet.findMany();
 
@@ -56,26 +59,26 @@ export async function POST(request: Request) {
 
         const newFleet = await prisma.fleet.create({
             data: {
-                fleet_id: fleet_id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-'), // Generate ID if absent
+                fleet_id: fleet_id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                 title,
                 isExclusive: isExclusive || false,
                 pricingType: pricingType || 'hourly',
                 image,
-                images: images ? JSON.stringify(images) : null,
+                images: jsonOrUndefined(images),
                 capacity: capacity?.toString() || '0',
                 duration: duration?.toString() || '0',
-                timing: timing || null,
+                timing: timing || undefined,
                 price: price || '0',
                 pricePerHour: parseInt(pricePerHour) || 0,
-                series: series || null,
-                route: route || null,
-                features: features ? JSON.stringify(features) : null,
-                inclusions: inclusions ? JSON.stringify(inclusions) : null,
-                foodOptions: foodOptions || null,
-                bestSuitedFor: bestSuitedFor ? JSON.stringify(bestSuitedFor) : null,
-                highlight: highlight || null,
-                tag: tag ? JSON.stringify(tag) : null,
-                packages: packages ? JSON.stringify(packages) : null,
+                series: series || undefined,
+                route: route || undefined,
+                features: jsonOrUndefined(features),
+                inclusions: jsonOrUndefined(inclusions),
+                foodOptions: foodOptions || undefined,
+                bestSuitedFor: jsonOrUndefined(bestSuitedFor),
+                highlight: highlight || undefined,
+                tag: jsonOrUndefined(tag),
+                packages: jsonOrUndefined(packages),
             }
         });
 
@@ -133,21 +136,21 @@ export async function PUT(request: Request) {
                 isExclusive: isExclusive || false,
                 pricingType: pricingType || 'hourly',
                 image,
-                images: images ? JSON.stringify(images) : null,
+                images: jsonOrUndefined(images),
                 capacity: capacity?.toString() || '0',
                 duration: duration?.toString() || '0',
-                timing: timing || null,
+                timing: timing || undefined,
                 price: price || '0',
                 pricePerHour: parseInt(pricePerHour) || 0,
-                series: series || null,
-                route: route || null,
-                features: features ? JSON.stringify(features) : null,
-                inclusions: inclusions ? JSON.stringify(inclusions) : null,
-                foodOptions: foodOptions || null,
-                bestSuitedFor: bestSuitedFor ? JSON.stringify(bestSuitedFor) : null,
-                highlight: highlight || null,
-                tag: tag ? JSON.stringify(tag) : null,
-                packages: packages ? JSON.stringify(packages) : null,
+                series: series || undefined,
+                route: route || undefined,
+                features: jsonOrUndefined(features),
+                inclusions: jsonOrUndefined(inclusions),
+                foodOptions: foodOptions || undefined,
+                bestSuitedFor: jsonOrUndefined(bestSuitedFor),
+                highlight: highlight || undefined,
+                tag: jsonOrUndefined(tag),
+                packages: jsonOrUndefined(packages),
             }
         });
 
