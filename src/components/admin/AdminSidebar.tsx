@@ -3,12 +3,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard } from "lucide-react"
+import { LayoutDashboard, Ship } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
 const navigation = [
     { name: "Bookings", href: "/admin", icon: LayoutDashboard },
+    { name: "Fleets", href: "/admin/fleet", icon: Ship },
 ]
 
 export function AdminSidebar() {

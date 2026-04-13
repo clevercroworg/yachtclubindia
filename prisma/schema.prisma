@@ -12,6 +12,7 @@ model User {
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Booking {
@@ -22,22 +23,74 @@ model Booking {
   time_slot           String
   guests              Int
   extra_hours         Int
-  addons              Json?
+  addons              String?  @db.LongText
   total_hours         Int
   charter_cost        Int
   addons_cost         Int
   quantity            Int
   subtotal            Int
+  amount_in_paise     Int      @default(0)
   customer_first_name String
   customer_last_name  String
   customer_email      String
   customer_phone      String
   customer_company    String?
+  razorpay_order_id   String?  @db.VarChar(255)
+  razorpay_payment_id String?  @db.VarChar(255)
+  razorpay_signature  String?  @db.VarChar(255)
+  payment_status      String   @default("pending") @db.VarChar(255)
   status              String   @default("pending")
-  amount_in_paise     Int      @default(0)
-  razorpay_order_id   String?
-  razorpay_payment_id String?
-  razorpay_signature  String?
-  payment_status      String   @default("pending")
   createdAt           DateTime @default(now())
+}
+
+model Contact {
+  id                 String   @id
+  name               String
+  email              String?
+  phone              String?
+  subject            String?
+  project            String?
+  visitDate          String?
+  visitTime          String?
+  message            String?  @db.Text
+  status             String   @default("unread")
+  isBrochureDownload Boolean  @default(false)
+  createdAt          DateTime @default(now())
+}
+
+model Post {
+  id        String   @id
+  slug      String   @unique(map: "slug")
+  title     String
+  excerpt   String   @db.Text
+  content   String   @db.Text
+  image     String?
+  author    String   @default("DCT Real Estate")
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Fleet {
+  id            String   @id @default(uuid())
+  fleet_id      String   @unique
+  isExclusive   Boolean  @default(false)
+  title         String
+  pricingType   String   @default("hourly")
+  image         String   @db.Text
+  images        Json?
+  capacity      String
+  duration      String
+  timing        String?
+  price         String
+  pricePerHour  Int      @default(0)
+  series        String?
+  route         String?  @db.Text
+  features      Json?
+  inclusions    Json?
+  foodOptions   String?  @db.Text
+  bestSuitedFor Json?
+  highlight     String?  @db.Text
+  tag           Json?
+  packages      Json?
 }

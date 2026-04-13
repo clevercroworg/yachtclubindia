@@ -23,7 +23,7 @@ export default function WaterSportsPage() {
     const [date, setDate] = useState('');
     const [minDate, setMinDate] = useState('');
 
-    const waterSportsData = fleetData.find(y => y.id === 'water-sports-booking');
+    const [waterSportsData, setWaterSportsData] = useState<any>(fleetData.find(y => y.id === 'water-sports-booking' || (y as any).fleet_id === 'water-sports-booking'));
 
     useEffect(() => {
         const today = new Date();
@@ -45,6 +45,17 @@ export default function WaterSportsPage() {
         if (typeof window !== 'undefined' && (window as any).instgrm) {
             (window as any).instgrm.Embeds.process();
         }
+
+        // Hydrate from DB
+        fetch('/api/fleets').then(r => r.json()).then(res => {
+            if (res.success && res.fleets && res.fleets.length > 0) {
+                const dyn = res.fleets.find((y: any) => y.id === 'water-sports-booking' || y.fleet_id === 'water-sports-booking');
+                if (dyn) {
+                    if (dyn.fleet_id) dyn.id = dyn.fleet_id;
+                    setWaterSportsData(dyn);
+                }
+            }
+        }).catch(console.error);
 
         return () => io.disconnect();
     }, []);

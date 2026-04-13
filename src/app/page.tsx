@@ -108,6 +108,19 @@ function LuxeCTASection() {
 }
 
 function FleetSection() {
+  const [fleetsState, setFleetsState] = useState<any[]>(fleetData as any[]);
+
+  useEffect(() => {
+      fetch('/api/fleets')
+          .then(res => res.json())
+          .then(data => {
+              if (data.success && data.fleets) {
+                  setFleetsState(data.fleets);
+              }
+          })
+          .catch(err => console.error("Failed to fetch dynamic fleets:", err));
+  }, []);
+
   return (
     <section id="fleet" className="bg-[#F4F7FB] py-28">
       <div className="mx-auto max-w-7xl px-6">
@@ -149,7 +162,7 @@ function FleetSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal="true">
-          {fleetData.map((yacht) => (
+          {fleetsState.map((yacht) => (
             <FleetCard key={yacht.id} {...yacht} tag={yacht.tag as any} />
           ))}
         </div>

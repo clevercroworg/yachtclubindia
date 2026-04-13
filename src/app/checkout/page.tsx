@@ -58,8 +58,20 @@ export default function CheckoutPage() {
         };
 
         if (data.yachtId) {
-            const foundYacht = fleetData.find(y => y.id === data.yachtId);
+            const foundYacht = fleetData.find(y => y.id === data.yachtId || (y as any).fleet_id === data.yachtId);
             if (foundYacht) setYacht(foundYacht);
+
+            // Hydrate with latest DB data if available
+            fetch('/api/fleets').then(r => r.json()).then(res => {
+                 if (res.success && res.fleets && res.fleets.length > 0) {
+                     const dyn = res.fleets.find((y: any) => y.id === data.yachtId || y.fleet_id === data.yachtId);
+                     if (dyn) {
+                         // normalize id for component use
+                         if (dyn.fleet_id) dyn.id = dyn.fleet_id;
+                         setYacht(dyn);
+                     }
+                 }
+            }).catch(console.error);
         }
 
         setBookingData(data);

@@ -15,6 +15,20 @@ export default function FleetPage() {
         sort: 'Featured'
     });
 
+    const [fleetsState, setFleetsState] = useState<any[]>(fleetData as any[]);
+
+    useEffect(() => {
+        fetch('/api/fleets')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.fleets) {
+                    setFleetsState(data.fleets);
+                }
+            })
+            .catch(err => console.error("Failed to fetch dynamic fleets:", err));
+    }, []);
+
+
     useEffect(() => {
         // Basic Intersection Observer for reveal animation
         const revealEls = document.querySelectorAll('[data-reveal]');
@@ -32,7 +46,7 @@ export default function FleetPage() {
     }, []);
 
     const filteredFleet = useMemo(() => {
-        let result = (fleetData as any[]).filter(yacht => !yacht.isExclusive);
+        let result = fleetsState.filter(yacht => !yacht.isExclusive);
 
         // 1. Filter by Name
         if (filters.name.trim()) {

@@ -92,7 +92,7 @@ export default function BookingPage() {
         const searchParams = new URLSearchParams(window.location.search);
         const yachtId = searchParams.get('yachtId');
         if (yachtId) {
-            const foundYacht = (fleetData as any[]).find((y: any) => y.id === yachtId);
+            const foundYacht = (fleetData as any[]).find((y: any) => y.id === yachtId || y.fleet_id === yachtId);
             if (foundYacht) {
                 setSelectedYacht(foundYacht);
                 setMainImg(foundYacht.images && foundYacht.images.length > 0 ? foundYacht.images[0] : foundYacht.image);
@@ -100,6 +100,21 @@ export default function BookingPage() {
                     setGalleryImages(foundYacht.images);
                 }
             }
+            
+            // Hydrate with latest DB data if available
+            fetch('/api/fleets').then(r => r.json()).then(res => {
+                 if (res.success && res.fleets && res.fleets.length > 0) {
+                     const dyn = res.fleets.find((y: any) => y.id === yachtId || y.fleet_id === yachtId);
+                     if (dyn) {
+                         if (dyn.fleet_id) dyn.id = dyn.fleet_id;
+                         setSelectedYacht(dyn);
+                         setMainImg(dyn.images && dyn.images.length > 0 ? dyn.images[0] : dyn.image);
+                         if (dyn.images && dyn.images.length > 0) {
+                             setGalleryImages(dyn.images);
+                         }
+                     }
+                 }
+            }).catch(console.error);
         }
 
         return () => io.disconnect();
