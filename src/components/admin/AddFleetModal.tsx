@@ -15,6 +15,8 @@ type AddFleetModalProps = {
 export function AddFleetModal({ isOpen, onClose, onSuccess, initialData }: AddFleetModalProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [uploadingMain, setUploadingMain] = useState(false);
+    const [uploadingGallery, setUploadingGallery] = useState(false);
 
     // Form state
     const [id, setId] = useState<string | null>(null);
@@ -102,6 +104,45 @@ export function AddFleetModal({ isOpen, onClose, onSuccess, initialData }: AddFl
             }
         }
     }, [isOpen, initialData]);
+
+    const handleFileUpload = async (file: File, type: "main" | "gallery") => {
+        if (!file) return;
+        
+        if (type === "main") setUploadingMain(true);
+        else setUploadingGallery(true);
+        setError(null);
+
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+            
+            if (data.success && data.url) {
+                if (type === "main") {
+                    setImage(data.url);
+                } else {
+                    // Wait for state to properly update if multiple files are chaining
+                    setImages(prev => {
+                        const currentImages = prev ? prev.split(',').map(s => s.trim()).filter(Boolean) : [];
+                        currentImages.push(data.url);
+                        return currentImages.join(', ');
+                    });
+                }
+            } else {
+                setError(data.error || "Failed to upload image.");
+            }
+        } catch (err) {
+            setError("Image upload failed due to network error.");
+        } finally {
+            if (type === "main") setUploadingMain(false);
+            else setUploadingGallery(false);
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -290,12 +331,34 @@ export function AddFleetModal({ isOpen, onClose, onSuccess, initialData }: AddFl
                             </div>
                             <div className="grid grid-cols-1 gap-6">
                                 <div className="space-y-1">
-                                    <Label className={labelClasses}>Main Image URL *</Label>
-                                    <input required type="text" className={inputClasses} value={image} onChange={e => setImage(e.target.value)} placeholder="e.g. /images/yacht/new.jpg" />
+                                    <Label className={labelClasses}>Main Image *</Label>
+                                    <div className="flex gap-3">
+                                        <input required type="text" className={`flex-1 ${inputClasses}`} value={image} onChange={e => setImage(e.target.value)} placeholder="Direct URL or upload using the button" />
+                                        <input type="file" accept="image/*" className="hidden" id="main-image-upload" onChange={(e) => { if (e.target.files?.[0]) handleFileUpload(e.target.files[0], "main"); }} />
+                                        <label htmlFor="main-image-upload" className={`cursor-pointer h-11 px-6 rounded-xl font-bold flex items-center justify-center transition-all shrink-0 ${uploadingMain ? 'bg-slate-100 text-slate-400 pointer-events-none' : 'bg-[#10233D] hover:bg-[#183152] text-white shadow-md'}`}>
+                                            {uploadingMain ? "Uploading..." : "Upload File"}
+                                        </label>
+                                    </div>
+                                    {image && <div className="mt-2 text-xs font-semibold text-emerald-600 bg-emerald-50 inline-block px-3 py-1 rounded-full border border-emerald-100">✓ Image Tracked</div>}
                                 </div>
                                 <div className="space-y-1">
-                                    <Label className={labelClasses}>Gallery Image URLs (Comma separated)</Label>
-                                    <textarea className={`${inputClasses} h-24 py-3 resize-none`} value={images} onChange={e => setImages(e.target.value)} placeholder="/images/g1.jpg, /images/g2.jpg" />
+                                    <Label className={labelClasses}>Gallery Images (Comma separated URLs or Upload Multiple)</Label>
+                                    <div className="flex gap-3 items-start">
+                                        <textarea className={`flex-1 ${inputClasses} h-24 py-3 resize-none`} value={images} onChange={e => setImages(e.target.value)} placeholder="URL1, URL2... (or just upload physical files using the system)" />
+                                        <input type="file" multiple accept="image/*" className="hidden" id="gallery-image-upload" onChange={async (e) => { 
+                                            if (e.target.files) {
+                                                const files = Array.from(e.target.files);
+                                                for (const f of files) {
+                                                    await handleFileUpload(f, "gallery");
+                                                }
+                                                // Reset input so you can re-upload same file if needed in the array
+                                                e.target.value = '';
+                                            }
+                                        }} />
+                                        <label htmlFor="gallery-image-upload" className={`cursor-pointer h-11 px-6 rounded-xl font-bold flex items-center justify-center transition-all shrink-0 ${uploadingGallery ? 'bg-slate-100 text-slate-400 pointer-events-none' : 'bg-[#10233D] hover:bg-[#183152] text-white shadow-md'}`}>
+                                            {uploadingGallery ? "Uploading..." : "Select Files"}
+                                        </label>
+                                    </div>
                                 </div>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -304,8 +367,8 @@ export function AddFleetModal({ isOpen, onClose, onSuccess, initialData }: AddFl
                                         <input type="text" className={inputClasses} value={highlight} onChange={e => setHighlight(e.target.value)} placeholder="e.g. Most popular yacht of 2024" />
                                     </div>
                                     <div className="space-y-1">
-                                        <Label className={labelClasses}>Tag Label (Optional)</Label>
-                                        <input type="text" className={inputClasses} value={tagLabel} onChange={e => setTagLabel(e.target.value)} placeholder="e.g. Best Value" />
+                                        <Label className={labelClasses}>Tag Label (Required) *</Label>
+                                        <input required type="text" className={inputClasses} value={tagLabel} onChange={e => setTagLabel(e.target.value)} placeholder="e.g. Best Value / New" />
                                     </div>
                                     <div className="space-y-1">
                                         <Label className={labelClasses}>Badge Color Theme</Label>
