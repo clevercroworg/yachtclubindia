@@ -94,3 +94,14 @@ model Fleet {
   tag           Json?
   packages      Json?
 }
+
+model BlockedSlot {
+  id        String   @id @default(uuid())
+  fleet_id  String
+  date      String
+  time_slot String
+  reason    String?
+  createdAt DateTime @default(now())
+
+  @@unique([fleet_id, date, time_slot])
+}

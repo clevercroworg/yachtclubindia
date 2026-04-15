@@ -51,6 +51,7 @@ export default function BookingPage() {
     const [extraHours, setExtraHours] = useState(0);
     const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
     const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
+    const [blockedSlots, setBlockedSlots] = useState<string[]>([]);
 
     const [galleryImages, setGalleryImages] = useState<string[]>([
         '/images/yacht/phoenix-1.jpg',
@@ -119,6 +120,25 @@ export default function BookingPage() {
 
         return () => io.disconnect();
     }, []);
+
+    // Fetch blocked slots when yacht + date change
+    useEffect(() => {
+        const yachtFleetId = selectedYacht?.fleet_id || selectedYacht?.id;
+        if (!yachtFleetId || !date) {
+            setBlockedSlots([]);
+            return;
+        }
+        fetch(`/api/blocked-slots?fleetId=${yachtFleetId}&date=${date}`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.success && data.blockedSlots) {
+                    setBlockedSlots(data.blockedSlots.map((bs: any) => bs.time_slot));
+                } else {
+                    setBlockedSlots([]);
+                }
+            })
+            .catch(() => setBlockedSlots([]));
+    }, [selectedYacht, date]);
 
     // Re-observe reveal elements when selectedYacht changes (for dynamically rendered sections)
     useEffect(() => {
@@ -295,9 +315,12 @@ export default function BookingPage() {
                                         <span>Time Slot (2 hrs)</span>
                                         <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)} required>
                                             <option value="" disabled>Select a time slot</option>
-                                            {TIME_SLOTS.map((slot) => (
-                                                <option key={slot.value} value={slot.value}>{slot.label}</option>
-                                            ))}
+                                            {TIME_SLOTS.map((slot) => {
+                                                const isBlocked = blockedSlots.includes(slot.value);
+                                                return (
+                                                <option key={slot.value} value={slot.value} disabled={isBlocked}>{isBlocked ? `${slot.label} — Slot Booked` : slot.label}</option>
+                                                );
+                                            })}
                                         </select>
                                     </label>
                                     <label className="booking-field">

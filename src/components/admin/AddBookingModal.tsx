@@ -1,12 +1,25 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { X, Calculator, CreditCard, Calendar, UserRound, ArrowRight } from "lucide-react"
+import { useState, useEffect, useCallback } from "react"
+import { X, Calculator, CreditCard, Calendar, UserRound, ArrowRight, AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import fleets from "@/data/fleet.json"
 import { ADDONS } from "@/data/addons"
+
+const TIME_SLOTS = [
+    { value: '6AM-8AM', label: '6 AM – 8 AM' },
+    { value: '8AM-10AM', label: '8 AM – 10 AM' },
+    { value: '10AM-12PM', label: '10 AM – 12 PM' },
+    { value: '12PM-2PM', label: '12 PM – 2 PM' },
+    { value: '2PM-4PM', label: '2 PM – 4 PM' },
+    { value: '4PM-6PM', label: '4 PM – 6 PM' },
+    { value: '6PM-8PM', label: '6 PM – 8 PM' },
+    { value: '8PM-10PM', label: '8 PM – 10 PM' },
+    { value: '10PM-12AM', label: '10 PM – 12 AM' },
+    { value: '12AM-2AM', label: '12 AM – 2 AM' },
+];
 
 type AddBookingModalProps = {
     isOpen: boolean;
@@ -22,7 +35,10 @@ export function AddBookingModal({ isOpen, onClose, onSuccess }: AddBookingModalP
     const [customer, setCustomer] = useState({ firstName: "", lastName: "", email: "", phone: "", company: "" });
     const [yachtId, setYachtId] = useState("");
     const [date, setDate] = useState("");
-    const [timeSlot, setTimeSlot] = useState("Morning");
+    const [timeSlot, setTimeSlot] = useState("");
+    const [blockedSlots, setBlockedSlots] = useState<string[]>([]);
+    const [slotWarningVisible, setSlotWarningVisible] = useState(false);
+    const [overrideConfirmed, setOverrideConfirmed] = useState(false);
     const [guests, setGuests] = useState(2);
     const [duration, setDuration] = useState(2);
     const [quantity, setQuantity] = useState(1);
@@ -76,6 +92,39 @@ export function AddBookingModal({ isOpen, onClose, onSuccess }: AddBookingModalP
             setTimeSlot(selectedYacht.timing);
         }
     }, [yachtId, selectedYacht, isTicket]);
+
+    // Fetch blocked slots when fleet or date changes
+    useEffect(() => {
+        const fleetIdVal = selectedYacht?.id || yachtId;
+        if (!fleetIdVal || !date) {
+            setBlockedSlots([]);
+            return;
+        }
+        fetch(`/api/blocked-slots?fleetId=${fleetIdVal}&date=${date}`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.success && data.blockedSlots) {
+                    setBlockedSlots(data.blockedSlots.map((bs: any) => bs.time_slot));
+                } else {
+                    setBlockedSlots([]);
+                }
+            })
+            .catch(() => setBlockedSlots([]));
+        // Reset override when fleet/date changes
+        setOverrideConfirmed(false);
+        setSlotWarningVisible(false);
+    }, [yachtId, date, selectedYacht]);
+
+    // Check if selected time slot is blocked
+    useEffect(() => {
+        if (timeSlot && blockedSlots.includes(timeSlot)) {
+            setSlotWarningVisible(true);
+            setOverrideConfirmed(false);
+        } else {
+            setSlotWarningVisible(false);
+            setOverrideConfirmed(false);
+        }
+    }, [timeSlot, blockedSlots]);
 
     useEffect(() => {
         if (hideAddons && selectedAddons.length > 0) {
@@ -247,16 +296,46 @@ export function AddBookingModal({ isOpen, onClose, onSuccess }: AddBookingModalP
                                         <div className="space-y-1">
                                             <Label className={labelClasses}>Time Slot</Label>
                                             <select 
-                                                className={`${inputClasses} appearance-none cursor-pointer`}
+                                                className={`${inputClasses} appearance-none cursor-pointer ${slotWarningVisible && !overrideConfirmed ? 'border-amber-400 ring-2 ring-amber-100' : ''}`}
                                                 style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
                                                 value={timeSlot} 
                                                 onChange={e => setTimeSlot(e.target.value)}
                                             >
-                                                <option value="Morning">Morning</option>
-                                                <option value="Afternoon">Afternoon</option>
-                                                <option value="Sunset">Sunset</option>
-                                                <option value="Night">Night</option>
+                                                <option value="" disabled>Select a time slot</option>
+                                                {TIME_SLOTS.map(slot => {
+                                                    const isBlocked = blockedSlots.includes(slot.value);
+                                                    return (
+                                                        <option key={slot.value} value={slot.value}>
+                                                            {slot.label}{isBlocked ? ' 🔒 (Blocked)' : ''}
+                                                        </option>
+                                                    );
+                                                })}
                                             </select>
+                                            {slotWarningVisible && (
+                                                <div className="mt-3 p-4 rounded-2xl bg-amber-50 border-2 border-amber-200 shadow-sm">
+                                                    <div className="flex items-start gap-3">
+                                                        <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                                                        <div className="flex-1">
+                                                            <p className="text-sm font-black text-amber-800">⚠️ This slot is blocked</p>
+                                                            <p className="text-xs text-amber-700 mt-1 leading-relaxed">This time slot has been blocked by an admin. It will show as "Slot Booked" to users on the booking page.</p>
+                                                            {!overrideConfirmed ? (
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => setOverrideConfirmed(true)}
+                                                                    className="mt-3 px-4 py-2 bg-amber-600 text-white text-xs font-black rounded-xl hover:bg-amber-700 transition-colors shadow-sm"
+                                                                >
+                                                                    Yes, Override & Proceed Anyway
+                                                                </button>
+                                                            ) : (
+                                                                <div className="mt-3 flex items-center gap-2">
+                                                                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                                                                    <span className="text-xs font-black text-emerald-700">Override confirmed — you may proceed.</span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="grid grid-cols-2 gap-5">
                                             <div className="space-y-1">
@@ -365,8 +444,8 @@ export function AddBookingModal({ isOpen, onClose, onSuccess }: AddBookingModalP
 
                         <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 pt-6 lg:pt-8 bg-white border-t border-slate-100">
                             <Button type="button" variant="outline" className="h-12 px-6 rounded-xl font-bold text-slate-500 border-slate-200 hover:bg-slate-50 hover:text-slate-800" onClick={onClose}>Discard</Button>
-                            <Button type="submit" className="h-12 px-8 rounded-xl bg-[#10233D] text-white font-black hover:bg-[#152e50] shadow-xl shadow-[#10233D]/20 transition-all hover:-translate-y-0.5" disabled={loading}>
-                                {loading ? "Saving Record..." : "Confirm & Create Booking"}
+                            <Button type="submit" className="h-12 px-8 rounded-xl bg-[#10233D] text-white font-black hover:bg-[#152e50] shadow-xl shadow-[#10233D]/20 transition-all hover:-translate-y-0.5" disabled={loading || (slotWarningVisible && !overrideConfirmed)}>
+                                {loading ? "Saving Record..." : (slotWarningVisible && !overrideConfirmed) ? "⚠️ Override Required" : "Confirm & Create Booking"}
                             </Button>
                         </div>
                     </form>
